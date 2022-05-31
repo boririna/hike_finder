@@ -4,10 +4,12 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.hike = @hike
+    @review.user = current_user
+
     if @review.save
-      redirect_to hike_path(@hike)
+      redirect_to hike_path(@hike), notice: "Review created successfully"
     else
-      render hike_path(@hike)
+      render "hikes/show"
     end
   end
 
