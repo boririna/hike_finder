@@ -5,10 +5,13 @@
   background-color: #FF0099;
   border-radius: 8px;
   box-shadow: 1px 2px 6px #725384;
-  margin-top: 30px;
 }
 
 .our-button:hover {
   background-color: #d0258b;
   color: whitesmoke;
+}
+
+.our-button-test {
+  background-color: $pink-500;
 }
