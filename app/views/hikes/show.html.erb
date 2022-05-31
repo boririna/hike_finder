@@ -18,3 +18,26 @@
 
 <h4>Services</h4>
 <p><%= @hike.services %></p>
+
+<%= simple_form_for [ @hike, @review ] do | f | %>
+  <%= f.input :content %>
+  <%= f.input :rating %>
+  <%= f.submit "Leave a review", class: "btn btn-primary" %>
+<% end %>
+
+<%= simple_form_for [ @hike ] do | f | %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+  <%= f.submit "Upload an image", class: "btn btn-primary" %>
+<% end %>
+
+
+<% if @hike.photos.any? %>
+  <%= cl_image_tag @hike.photos[0].key %>
+<%end%>
+
+
+<%= Review.average_rating(@hike) %>
+
+<%# <% @reviews.each do | review | %>
+
+<%# <% end %>
