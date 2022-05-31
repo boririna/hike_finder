@@ -13,10 +13,7 @@
                         autofocus: true,
                         input_html: { autocomplete: "email" } %>
           </div>
-
-          <div class="form-actions">
-            <input class="btn btn-primary" type="submit" value="Send me reset password instructions">
-          </div>
+          <%= f.button :submit, "Reset password", class:"our-button" %>
         <% end %>
 
         <div class="mb-3 mt-3">
