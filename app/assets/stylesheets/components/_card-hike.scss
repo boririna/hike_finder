@@ -2,12 +2,24 @@
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  position: relative;
 }
 
 .card-trip > img {
   height: 300px;
   width: 100%;
   object-fit: cover;
+}
+
+.image-icon {
+  position: absolute;
+  z-index: 1;
+  color: rgb(169, 169, 169);
+  text-shadow: 1px 1px 8px #6e6e6e;
+  font-size: 28px;
+  top: 16px;
+  left: 88%;
+  text-align: right;
 }
 
 .card-trip h2 {

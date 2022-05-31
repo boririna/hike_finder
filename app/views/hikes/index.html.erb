@@ -1,8 +1,12 @@
-<%= link_to "Add a new Hike", new_hike_path, class: "btn our-button" %>
+
 <div class="container">
+  <%= link_to "Add a new Hike", new_hike_path, class: "btn our-button mt-3 mx-4" %>
   <div class="cards m-4">
     <% @hikes.each do |hike| %>
       <div class="card-trip">
+
+          <i class="fas fa-heart image-icon"></i>
+
         <% if hike.photos.any? %>
           <%= cl_image_tag hike.photos[0].key, alt: "Card image cap" %>
         <%end%>
