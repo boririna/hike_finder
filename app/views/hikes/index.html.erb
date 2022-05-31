@@ -1,9 +1,11 @@
-
+<%= link_to "Add a new Hike", new_hike_path, class: "btn our-button" %>
 <div class="container">
   <div class="cards m-4">
     <% @hikes.each do |hike| %>
       <div class="card-trip">
-        <%= image_tag "rigi_panoramaweg.jpg", alt: "Card image cap"%>
+        <% if hike.photos.any? %>
+          <%= cl_image_tag hike.photos[0].key, alt: "Card image cap" %>
+        <%end%>
         <div class="card-trip-infos">
           <div class="card-trip-title">
             <h2><%= hike.name %></h2>
