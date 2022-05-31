@@ -1,47 +1,79 @@
-<%= link_to "Add a new Hike", edit_hike_path, class: "btn our-button" %>
+
+<div class="container">
+
+  <%= "⭐" * Review.average_rating(@hike) %>
+  <%= link_to "Edit the Hike", edit_hike_path, class: "btn our-button" %>
 <%= link_to 'Delete', @hike, class:"btn our-button", method: :delete, data: { confirm: 'Are you sure?' } %>
 
 <br><br>
+
+  <% if @hike.photos.any? %>
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <%= cl_image_tag @hike.photos[0].key, class:"d-block w-100", alt:"..." %>
+        </div>
+        <% @hike.photos.each do |photo| %>
+          <div class="carousel-item">
+            <%= cl_image_tag photo.key, class:"d-block w-100", alt:"..." %>
+          </div>
+        <% end %>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+    </div>
+
 
 <h2><%= @hike.name %></h2>
 <%# <p>Hiking Time: <%= @hike. %></p>
 <p>Length: <%= @hike.length %></p>
 <p><% if @hike.dog_friendly %>
   Dog Friendly
+
   <% end %>
-</p>
+  </p>
 
-<h4>Description of your hike</h4>
-<p><%= @hike.description %></p>
+  <h4>Description of your hike</h4>
+  <p><%= @hike.description %></p>
 
-<h4>Difficulty Level</h4>
-<p><%= @hike.difficulty_level %></p>
+  <h4>Difficulty Level</h4>
+  <p><%= @hike.difficulty_level %></p>
 
-<h4>Altitude gain </h4>
-<p><%= @hike.ascent - @hike.descent %></p>
+  <h4>Altitude gain </h4>
+  <p><%= @hike.ascent - @hike.descent %></p>
 
-<h4>Services</h4>
-<p><%= @hike.services %></p>
+  <h4>Services</h4>
+  <p><%= @hike.services %></p>
 
-<%= simple_form_for [ @hike, @review ] do | f | %>
-  <%= f.input :content %>
-  <%= f.input :rating %>
-  <%= f.submit "Leave a review", class: "btn btn-primary" %>
-<% end %>
+  <%= simple_form_for [ @hike, @review ] do | f | %>
+    <%= f.input :content %>
+    <%= f.input :rating %>
+    <%= f.submit "Leave a review", class: "btn btn-primary" %>
+  <% end %>
 
-<%= simple_form_for [ @hike ] do | f | %>
-  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-  <%= f.submit "Upload an image", class: "btn btn-primary" %>
-<% end %>
-
-
-<% if @hike.photos.any? %>
-  <%= cl_image_tag @hike.photos[0].key %>
-<%end%>
+  <%= simple_form_for [ @hike ] do | f | %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+    <%= f.submit "Upload an image", class: "btn btn-primary" %>
+  <% end %>
 
 
-<%= Review.average_rating(@hike) %>
 
-<%# <% @reviews.each do | review | %>
 
-<%# <% end %>
+  <% @reviews.each do | review | %>
+    <ul>
+      <li>
+        <%= review.content %>
+        <%= review.rating %>
+      </li>
+    </ul>
+  <% end %>
+
+  <p><i class="fa-solid fa-dog"></i> </p>
+
+</div>
