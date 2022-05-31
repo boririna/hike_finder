@@ -1,0 +1,15 @@
+<div class="our-container text-start my-4">
+  <h3 class="my-2"> Add a new hike</h3>
+    <%= simple_form_for [ @hike ] do |f| %>
+      <%= f.input :name %>
+      <%= f.input :description %>
+      <%= f.input :difficulty_level %>
+      <%= f.input :length %>
+      <%= f.input :ascent %>
+      <%= f.input :descent %>
+      <%= f.input :services %>
+      <%= f.collection_check_boxes :dog_friendly, [[true, 'Dogfriendly']], :first, :last%>
+      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+      <%= f.submit "Add Hike", class: "btn btn-primary" %>
+    <% end %>
+</div>
