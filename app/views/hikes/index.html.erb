@@ -1,15 +1,16 @@
-<div class="cards">
+<div class="cards m-4">
   <% @hikes.each do |hike| %>
-    <div class="card m-3" style="width: 18rem;">
+    <div class="card-trip">
       <%= image_tag "rigi_panoramaweg.jpg", alt: "Card image cap"%>
-      <div class="card-body">
-        <h5 class="card-title"><%= hike.name %></h5>
-        <p class="card-text"><%= hike.description %></p>
-        <p class="card-text"><%= hike.difficulty_level %></p>
-        <p class="card-text"><%= hike.length %></p>
-        <p class="card-text"><%= hike.ascent %></p>
-        <p class="card-text"><%= hike.descent %></p>
-        <%# <a href="#" class="btn btn-primary">Go somewhere</a> %>
+      <div class="card-trip-infos">
+        <div>
+          <h2><%= hike.name %></h2>
+          <p><%= hike.description %></p>
+          <p class="card-text">Difficulty level: <%= hike.difficulty_level %></p>
+          <p class="card-text">Distance: <%= hike.length %> km</p>
+        </div>
+        <p class="card-trip-pricing">Ascent: <%= hike.ascent %> m</p>
+        <p class="card-trip-pricing">Descent: <%= hike.descent %> m</p>
       </div>
     </div>
   <% end %>
