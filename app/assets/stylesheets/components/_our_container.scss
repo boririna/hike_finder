@@ -1,3 +1,4 @@
+
 .our-container-form {
   width: 80%;
   margin: 0 auto;
@@ -5,4 +6,13 @@
 
 .our-container-form h2 {
   color: #01B2B2;
+
+.our-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 80%;
+  height: 80%;
+  text-align: center;
+  margin: auto;
 }
