@@ -5,7 +5,7 @@
 }
 
 .card-trip > img {
-  height: 200px;
+  height: 300px;
   width: 100%;
   object-fit: cover;
 }
@@ -22,12 +22,11 @@
   margin: 0;
 }
 
-
 .card-trip .card-trip-infos {
   padding: 16px;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: flex-start;
   position: relative;
 }
 
@@ -36,4 +35,8 @@
   right: 16px;
   top: -20px;
   width: 40px;
+}
+
+.card-trip-title {
+  max-width: 150px;
 }
