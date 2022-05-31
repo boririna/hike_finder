@@ -6,6 +6,6 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :update]
     resources :reviews, only: [:create, :update]
   end
-  resources :likes, only: [:index,:show,:destroy]
-  resources :reviews, only: [:index,:show,:destroy]
+  resources :likes, only: [:index,:destroy]
+  resources :reviews, only: [:index,:destroy]
 end
