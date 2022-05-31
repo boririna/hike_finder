@@ -1,5 +1,9 @@
+<%= link_to "Add a new Hike", edit_hike_path, class: "btn our-button" %>
+<%= link_to 'Delete', @hike, class:"btn our-button", method: :delete, data: { confirm: 'Are you sure?' } %>
 
-<%= @hike.name %>
+<br><br>
+
+<h2><%= @hike.name %></h2>
 <%# <p>Hiking Time: <%= @hike. %></p>
 <p>Length: <%= @hike.length %></p>
 <p><% if @hike.dog_friendly %>
