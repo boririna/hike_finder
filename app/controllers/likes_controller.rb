@@ -1,16 +1,8 @@
 class LikesController < ApplicationController
-  before_action :set_like, only: [:show, :edit, :update, :destroy]
+  before_action :set_like, only: [:update, :destroy]
 
   def index
     @likes = Like.all
-  end
-
-  def show
-  end
-
-  def new
-    @hike = Hike.find(params[:hike_id])
-    @like = Like.new
   end
 
   def create
@@ -21,17 +13,6 @@ class LikesController < ApplicationController
       redirect_to likes_path
     else
       render :new
-    end
-  end
-
-  def edit
-  end
-
-  def update
-    if @like.update(like_params)
-      redirect_to like_path(@like)
-    else
-      render :edit
     end
   end
 
