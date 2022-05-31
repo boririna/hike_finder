@@ -1,7 +1,7 @@
 <div class="background-heigth">
-  <div class="container">
+  <div class="our-container-form">
     <div class="row">
-      <div class="col-sm-6 offset-3 p-4 bg-white rounded my-3">
+      <div class="col-sm-6 col-md-6 col-lg-6 p-4 bg-white rounded my-3">
         <h2>Sign up</h2>
 
         <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -23,13 +23,15 @@
                         required: true,
                         input_html: { autocomplete: "new-password" } %>
           </div>
+          <%= f.button :submit, "Sign up", class:"our-button" %>
 
-          <div class="form-actions">
-            <%= f.button :submit, "Sign up" %>
-          </div>
         <% end %>
 
-        <%= render "devise/shared/links" %>
+        <div class="link mb-3 mt-3">
+          <%- if controller_name != 'sessions' %>
+            <%= link_to "Log in", new_session_path(resource_name), class:"link" %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
