@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :set_hike, only: :create
+  before_action :set_review, only: [ :edit, :update, :destroy ]
 
   def create
     @review = Review.new(review_params)
@@ -13,12 +14,22 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def update
+  def edit
+  end
 
+  def update
+    @review.user = current_user
+    @review.hike = @hike
+    if @review.update(review_params)
+      redirect_to hike_review_path(@review.hike)
+    else
+      render "hikes/show"
+    end
   end
 
   def destroy
-
+    @review.destroy
+    redirect_to hike_path(@review.hike)
   end
 
   private
@@ -29,5 +40,9 @@ class ReviewsController < ApplicationController
 
   def set_hike
     @hike = Hike.find(params[:hike_id])
+  end
+
+  def set_review
+    @review = Review.find(params[:id])
   end
 end

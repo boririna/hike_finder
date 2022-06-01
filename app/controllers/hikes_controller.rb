@@ -47,6 +47,7 @@ class HikesController < ApplicationController
 
   def destroy
     @hike.destroy
+
     redirect_to hikes_path
   end
 

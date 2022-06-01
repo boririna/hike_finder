@@ -10,6 +10,7 @@
   <%= link_to "Edit the Hike", edit_hike_path(@hike), class: "btn our-button" %>
   <%= link_to 'Delete', @hike, class:"btn our-button", method: :delete, data: { confirm: 'Are you sure?' } %>
 
+
   <br><br>
 
   <% if @hike.photos.any? %>
@@ -70,15 +71,15 @@
 
 
 
-  <% if @reviews %>
-    <% @reviews.each do | review | %>
-      <ul>
-        <li>
-          <%= review.content %>
-          <%= review.rating %>
-        </li>
-      </ul>
-    <% end %>
+  <% @reviews.each do | review | %>
+    <ul>
+      <li>
+        <%= review.content %>
+        <%= review.rating %>
+        <%= link_to 'Delete', review, class:"btn btn-primary", method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= link_to "Edit the Review", edit_review_path(review), class: "btn btn-primary" %>
+      </li>
+    </ul>
   <% end %>
 
 </div>
