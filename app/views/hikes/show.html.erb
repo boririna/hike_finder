@@ -32,10 +32,11 @@
 
 
 <h2><%= @hike.name %></h2>
-<%# <p><i class="far fa-clock"></i> Hiking Time: <%= @hike. %></p>
-<p>Length: <%= @hike.length %></p>
+<p><i class="fas fa-arrows-alt-h" style="color: #01B2B2"></i>
+  Length: <%= @hike.length %> km</p>
 <p><% if @hike.dog_friendly %>
-  <i class="fas fa-dog"></i>
+  <i class="fas fa-dog" style="color: #01B2B2"></i>
+  Dog friendly
   <% end %>
   </p>
 
