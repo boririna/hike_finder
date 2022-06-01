@@ -1,20 +1,22 @@
 class LikesController < ApplicationController
-  before_action :set_like, only: [:update, :destroy]
+  before_action :set_hike, only: [:create, :destroy]
 
   def index
     @likes = Like.all
   end
 
   def create
-    @hike = Hike.find(params[:hike_id])
-    @like = Like.new(like_params)
+    @like = Like.new
+    @like.hike = @hike
     @like.user = current_user
+
     if @like.save
-      redirect_to likes_path
+      redirect_to likes_path, notice: "like created successfully"
     else
-      render :new
+      redirect_to hike_path(@hike), notice: "You already liked this"
     end
   end
+
 
   def destroy
     @like.destroy
@@ -22,12 +24,9 @@ class LikesController < ApplicationController
   end
 
   private
-    def like_params
-      params.require(:like).permit(:hike_id)
-    end
 
-    def set_like
-      @like = Like.find(params[:id])
+    def set_hike
+      @hike = Hike.find(params[:hike_id])
     end
 
 end
