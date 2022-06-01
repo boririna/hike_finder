@@ -17,6 +17,8 @@ class HikesController < ApplicationController
   def show
     @review = Review.new
     @reviews = @hike.reviews.all
+    @like = Like.new
+    @likes = @hike.likes.all
   end
 
   def new

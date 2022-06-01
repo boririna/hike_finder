@@ -1,7 +1,6 @@
+<div class="container bg-white" data-controller="filter">
 
-<div class="container">
-
-  <div style="width: 100%; height: 600px;"
+  <div style="width: 100%; height: 300px;"
     data-controller="mapbox"
     data-mapbox-markers-value="<%= @markers.to_json %>"
     data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
@@ -9,7 +8,36 @@
 
   <%= link_to "Add a new Hike", new_hike_path, class: "btn our-button mt-3 mx-4" %>
 
+  <div class="our-container-form" data-filter-target="filters">
+    <label>Difficulty level</label>
+    <select class="form-select my-1" aria-label="Default select example">
+      <option selected>Choose...</option>
+      <option value="1">Easy</option>
+      <option value="2">Medium</option>
+      <option value="3">Hard</option>
+      <option value="3">Experienced</option>
+    </select>
+    <p data-filter-target="text" data-action="click->filter#displayForm">More filters...</p>
+  </div>
+  <div class="d-none our-container-form" data-filter-target="form" >
+
+    <label for="customRange3" class="form-label">Length</label>
+    <div class="d-flex justify-content-between">
+      <p>0 km</p>
+      <p>40 km</p>
+    </div>
+    <input type="range" class="form-range" min="0" max="40" step="5" id="customRange3">
+    <label for="customRange3" class="form-label">Altitude gain</label>
+    <div class="d-flex justify-content-between">
+      <p>0 m</p>
+      <p>3000 m</p>
+    </div>
+    <input type="range" class="form-range" min="0" max="40" step="5" id="customRange3">
+    <p data-action="click->filter#hideForm">Less filters...</p>
+  </div>
+
   <div class="cards m-4">
+
     <% @hikes.each do |hike| %>
       <div class="card-trip">
 
