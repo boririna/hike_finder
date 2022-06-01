@@ -1,4 +1,3 @@
-
 <div class="container bg-white" data-controller="filter">
 
   <div style="width: 100%; height: 300px;"
@@ -8,7 +7,7 @@
   </div>
 
   <%= link_to "Add a new Hike", new_hike_path, class: "btn our-button mt-3 mx-4" %>
-  
+
   <div class="our-container-form" data-filter-target="filters">
     <label>Difficulty level</label>
     <select class="form-select my-1" aria-label="Default select example">
@@ -20,7 +19,7 @@
     </select>
     <p data-filter-target="text" data-action="click->filter#displayForm">More filters...</p>
   </div>
-  <div class="our-container-form" data-filter-target="form" >
+  <div class="d-none our-container-form" data-filter-target="form" >
 
     <label for="customRange3" class="form-label">Length</label>
     <div class="d-flex justify-content-between">
@@ -36,7 +35,7 @@
     <input type="range" class="form-range" min="0" max="40" step="5" id="customRange3">
     <p data-action="click->filter#hideForm">Less filters...</p>
   </div>
-  
+
   <div class="cards m-4">
 
     <% @hikes.each do |hike| %>
