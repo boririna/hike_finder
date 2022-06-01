@@ -3,6 +3,13 @@ class HikesController < ApplicationController
 
   def index
     @hikes = Hike.all
+
+    @markers = @hikes.map do | hike |
+      {
+        lat: hike.latitude,
+        lng: hike.longitude
+      }
+    end
   end
 
   def show
