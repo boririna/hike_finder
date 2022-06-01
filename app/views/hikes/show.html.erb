@@ -2,10 +2,15 @@
 <div class="container">
 
   <%= "⭐" * Review.average_rating(@hike) %>
-  <%= link_to "Edit the Hike", edit_hike_path(@hike), class: "btn our-button" %>
-<%= link_to 'Delete', @hike, class:"btn our-button", method: :delete, data: { confirm: 'Are you sure?' } %>
 
-<br><br>
+  <%= simple_form_for [ @hike, @like ] do | f | %>
+    <%= f.submit "Like", class: "btn btn-primary" %>
+  <% end %>
+
+  <%= link_to "Edit the Hike", edit_hike_path(@hike), class: "btn our-button" %>
+  <%= link_to 'Delete', @hike, class:"btn our-button", method: :delete, data: { confirm: 'Are you sure?' } %>
+
+  <br><br>
 
   <% if @hike.photos.any? %>
     <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
