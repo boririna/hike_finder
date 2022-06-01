@@ -8,5 +8,4 @@ class Review < ApplicationRecord
   def self.average_rating(hike)
     Review.where(hike_id: hike.id).average(:rating).to_i
   end
-
 end

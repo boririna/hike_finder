@@ -10,7 +10,6 @@
   <%= link_to "Edit the Hike", edit_hike_path(@hike), class: "btn our-button" %>
   <%= link_to 'Delete', @hike, class:"btn our-button", method: :delete, data: { confirm: 'Are you sure?' } %>
 
-
   <br><br>
 
   <% if @hike.photos.any? %>
@@ -68,8 +67,6 @@
     <%= f.input :photos, as: :file, input_html: { multiple: true } %>
     <%= f.submit "Upload an image", class: "btn btn-primary" %>
   <% end %>
-
-
 
   <% @reviews.each do | review | %>
     <ul>

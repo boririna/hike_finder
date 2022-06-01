@@ -18,10 +18,8 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    @review.user = current_user
-    @review.hike = @hike
     if @review.update(review_params)
-      redirect_to hike_review_path(@review.hike)
+      redirect_to hike_path(@review.hike)
     else
       render "hikes/show"
     end
