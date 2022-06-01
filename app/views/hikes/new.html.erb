@@ -3,7 +3,7 @@
     <%= simple_form_for [ @hike ] do |f| %>
       <%= f.input :name %>
       <%= f.input :description %>
-      <%= f.input :difficulty_level %>
+      <%= f.input :difficulty_level, collection: ["easy", "medium", "hard", "experienced"]%>
       <%= f.input :length %>
       <%= f.input :ascent %>
       <%= f.input :descent %>
