@@ -2,7 +2,7 @@
 <div class="container">
 
   <%= "⭐" * Review.average_rating(@hike) %>
-  <%= link_to "Edit the Hike", edit_hike_path, class: "btn our-button" %>
+  <%= link_to "Edit the Hike", edit_hike_path(@hike), class: "btn our-button" %>
 <%= link_to 'Delete', @hike, class:"btn our-button", method: :delete, data: { confirm: 'Are you sure?' } %>
 
 <br><br>
@@ -64,14 +64,15 @@
 
 
 
-
-  <% @reviews.each do | review | %>
-    <ul>
-      <li>
-        <%= review.content %>
-        <%= review.rating %>
-      </li>
-    </ul>
+  <% if @reviews %>
+    <% @reviews.each do | review | %>
+      <ul>
+        <li>
+          <%= review.content %>
+          <%= review.rating %>
+        </li>
+      </ul>
+    <% end %>
   <% end %>
 
   <p><i class="fa-solid fa-dog"></i> </p>
