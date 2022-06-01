@@ -1,5 +1,14 @@
-<%= link_to "Add a new Hike", new_hike_path, class: "btn our-button" %>
+
 <div class="container bg-white" data-controller="filter">
+
+  <div style="width: 100%; height: 300px;"
+    data-controller="mapbox"
+    data-mapbox-markers-value="<%= @markers.to_json %>"
+    data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+
+  <%= link_to "Add a new Hike", new_hike_path, class: "btn our-button mt-3 mx-4" %>
+  
   <div class="our-container-form" data-filter-target="filters">
     <label>Difficulty level</label>
     <select class="form-select my-1" aria-label="Default select example">
@@ -27,25 +36,30 @@
     <input type="range" class="form-range" min="0" max="40" step="5" id="customRange3">
     <p data-action="click->filter#hideForm">Less filters...</p>
   </div>
-
+  
   <div class="cards m-4">
 
     <% @hikes.each do |hike| %>
       <div class="card-trip">
+
+          <i class="fas fa-heart image-icon"></i>
+
         <% if hike.photos.any? %>
           <%= cl_image_tag hike.photos[0].key, alt: "Card image cap" %>
         <%end%>
-        <div class="card-trip-infos">
-          <div class="card-trip-title">
-            <h2><%= hike.name %></h2>
-            <p><%= hike.description %></p>
+        <%= link_to hike_path(hike), class:"text-decoration-none link" do %>
+          <div class="card-trip-infos">
+            <div class="card-trip-title">
+              <h2><%= hike.name %></h2>
+              <p class="text-hidden"><%= hike.description %></p>
+            </div>
+            <div>
+              <p class="card-text">Difficulty level: <%= hike.difficulty_level %></p>
+              <p class="card-text">Distance: <%= hike.length %> km</p>
+              <p>Ascent: <%= hike.ascent %> m</p>
+            </div>
           </div>
-          <div>
-            <p class="card-text">Difficulty level: <%= hike.difficulty_level %></p>
-            <p class="card-text">Distance: <%= hike.length %> km</p>
-            <p>Ascent: <%= hike.ascent %> m</p>
-          </div>
-        </div>
+        <% end %>
       </div>
     <% end %>
   </div>

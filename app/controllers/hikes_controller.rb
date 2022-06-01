@@ -3,6 +3,15 @@ class HikesController < ApplicationController
 
   def index
     @hikes = Hike.all
+
+    @markers = @hikes.map do | hike |
+      {
+        lat: hike.latitude,
+        lng: hike.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { hike: hike }),
+        image_url: helpers.asset_url("marker.png")
+      }
+    end
   end
 
   def show
@@ -42,7 +51,7 @@ class HikesController < ApplicationController
   private
 
   def hike_params
-    params.require(:hike).permit(:name, :description, :difficulty_level, :length, :ascent, :descent, :services, :dog_friendly, photos: [])
+    params.require(:hike).permit(:name, :description, :difficulty_level, :length, :ascent, :descent, :services, :latitude, :longitude, :dog_friendly, photos: [] )
   end
 
   def set_hike

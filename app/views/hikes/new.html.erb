@@ -8,6 +8,8 @@
       <%= f.input :ascent %>
       <%= f.input :descent %>
       <%= f.input :services %>
+      <%= f.input :latitude %>
+      <%= f.input :longitude %>
       <%= f.collection_check_boxes :dog_friendly, [[true, 'Dogfriendly']], :first, :last%>
       <%= f.input :photos, as: :file, input_html: { multiple: true } %>
       <%= f.submit "Add Hike", class: "btn btn-primary" %>
