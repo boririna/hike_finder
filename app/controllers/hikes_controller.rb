@@ -7,7 +7,7 @@ class HikesController < ApplicationController
 
   def show
     @review = Review.new
-    @reviews = Review.where(hike_id: @hike.id).all
+    @reviews = @hike.reviews.all
   end
 
   def new
