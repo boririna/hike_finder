@@ -1,6 +1,7 @@
 
 
 class HikesController < ApplicationController
+<<<<<<< HEAD
   before_action :set_hike, only: [ :show, :edit, :update, :destroy ]
   def index
    if params[:query_address].present?
@@ -21,6 +22,19 @@ class HikesController < ApplicationController
    else
     @hikes = Hike.all
    end
+=======
+  skip_before_action :authenticate_user!, only: %i[index show]
+  before_action :set_hike, only: %i[show edit update destroy]
+
+  def index
+    # @hikes = Hike.all
+
+    if params[:filter].present?
+      @hikes = Hike.where(difficulty_level: params[:filter][:difficulty_level])
+    else
+      @hikes = Hike.all
+    end
+>>>>>>> 97b216bed751088940a48c88c1b8f7098749a90a
 
     @markers = @hikes.map do | hike |
       {
