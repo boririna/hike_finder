@@ -3,7 +3,13 @@ class HikesController < ApplicationController
   before_action :set_hike, only: %i[show edit update destroy]
 
   def index
-    @hikes = Hike.all
+    # @hikes = Hike.all
+
+    if params[:filter].present?
+      @hikes = Hike.where(difficulty_level: params[:filter][:difficulty_level])
+    else
+      @hikes = Hike.all
+    end
 
     @markers = @hikes.map do | hike |
       {
