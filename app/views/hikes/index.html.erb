@@ -9,8 +9,8 @@
   <%= link_to "Add a new Hike", new_hike_path, class: "btn our-button mt-3 mx-4" %>
 
   <div class="our-container-form" data-filter-target="filters">
-     <%= simple_form_for :filter, { url: hikes_path } do |f| %>
-        <%= f.input :difficulty_level, required: false, prompt: "Select here", :collection => %w[Easy Medium Hard Experienced] %>
+    <%= simple_form_for :filter, url: hikes_path, method: :get do |f| %>
+        <%= f.input :difficulty_level, required: false, prompt: "Select here", collection: Hike::LEVELS %>
         <p data-filter-target="text" data-action="click->filter#displayForm">More filters...</p>
     <div class="d-none" data-filter-target="form" >
       <%= f.input :length, as: :range, required: false, label_html: { data: {filter_target: 'lengthLabel' }}, input_html:{ min:"0", max:"40", data:{action:"change->filter#updateLength"}}%>
