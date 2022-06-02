@@ -1,5 +1,6 @@
 class HikesController < ApplicationController
-  before_action :set_hike, only: [ :show, :edit, :update, :destroy ]
+  skip_before_action :authenticate_user!, only: %i[index show]
+  before_action :set_hike, only: %i[show edit update destroy]
 
   def index
     @hikes = Hike.all

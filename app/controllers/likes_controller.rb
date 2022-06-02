@@ -1,5 +1,5 @@
 class LikesController < ApplicationController
-  before_action :set_hike, only: [:create, :destroy]
+  before_action :set_hike, only: %i[create destroy]
 
   def index
     @likes = Like.all
@@ -18,7 +18,6 @@ class LikesController < ApplicationController
     end
   end
 
-
   def destroy
     @like.destroy
     redirect_to likes_path
@@ -26,8 +25,7 @@ class LikesController < ApplicationController
 
   private
 
-    def set_hike
-      @hike = Hike.find(params[:hike_id])
-    end
-
+  def set_hike
+    @hike = Hike.find(params[:hike_id])
+  end
 end
