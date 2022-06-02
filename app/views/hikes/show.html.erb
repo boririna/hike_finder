@@ -21,14 +21,22 @@
   <h2 class="text-center my-3"><%= @hike.name %></h2>
   <div class="placeholder-image"></div>
 
-  <div class="d-flex justify-content-between m-3">
-    <p>
-      <i class="fas fa-arrows-alt-h" style="color: #01B2B2"></i>
+  <div class="d-flex justify-content-between flex-wrap m-3">
+    <p class="me-2 d-flex">
+      <i class="fas fa-mountain me-1" style="color: #01B2B2"></i>
+      Difficulty level: <%= @hike.difficulty_level %>
+    </p>
+    <p class="ms-2 d-flex">
+      <i class="fas fa-arrows-alt-h me-1" style="color: #01B2B2"></i>
       Length: <%= @hike.length %> km
     </p>
-    <p>
+    <p class="me-2 d-flex">
+    <i class="fas fa-angle-double-up me-1" style="color: #01B2B2"></i>
+      Altitude gain: <%= @hike.ascent %>m
+    </p>
+    <p class="ms-2 d-flex">
       <% if @hike.dog_friendly %>
-        <i class="fas fa-dog" style="color: #01B2B2"></i>
+        <i class="fas fa-dog me-1" style="color: #01B2B2"></i>
         Dog friendly
       <% end %>
     </p>
@@ -38,26 +46,13 @@
   <p class="mx-5 mb-4"><%= @hike.description %></p>
   <div class="line"></div>
 
-  <h3 class="text-center my-3">Difficulty Level</h3>
-  <p class="mx-5 mb-4">Lorem ipsum dolor sit amet, consectetur adipisici elit,
-    sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad
-    minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex
-    ea commodi consequat. Quis aute iure </p>
-  <div class="line"></div>
-
-  <h3 class="text-center my-3">Altitude gain </h3>
-  <p class="mx-5 mb-4">Lorem ipsum dolor sit amet, consectetur adipisici elit,
-    sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad
-  </p>
-  <div class="line"></div>
-
   <h3 class="text-center my-3">Services</h3>
   <p class="mx-5 mb-4"><%= @hike.services %></p>
   <div class="line"></div>
 
   <h3 class="text-center my-3">Image gallery</h3>
   <% if @hike.photos.any? %>
-    <div id="carouselExampleSlidesOnly" class="carousel slide mb-5" data-bs-ride="carousel">
+    <div id="carouselExampleSlidesOnly" class="carousel slide mb-3" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
           <%= cl_image_tag @hike.photos[0].key, class:"d-block w-100", alt:"..." %>
@@ -80,27 +75,36 @@
   <% end %>
 
   <div>
-    <p>click here to leave a review</p>
-  </div>
-  <div class="d-none">
-    <%= simple_form_for [ @hike, @review ] do | f | %>
-      <%= f.input :content %>
-      <%= f.input :rating %>
-      <%= f.submit "Leave a review", class: "btn btn-primary" %>
-    <% end %>
+    <div data-controller="form">
+      <div>
+        <p class="me-3 text-end" data-form-target="imagetext" data-action="click->form#displayImage">Upload an image <i class="fas fa-chevron-down"></i></p>
+      </div>
+      <div data-form-target="image" class="d-none mx-3 py-3">
+        <%= simple_form_for [ @hike ] do | f | %>
+          <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+          <%= f.submit "Upload an image", class: "btn btn-primary" %>
+        <% end %>
+        <p data-action="click->form#hideImage" class="text-center"> <i class="fas fa-chevron-up"></i> </p>
+      </div>
+      <div class="line-sm"></div>
+
+      <div>
+        <p class="me-3 text-end" data-form-target="text" data-action="click->form#displayForm">Leave a review <i class="fas fa-chevron-down"></i></p>
+      </div>
+      <div data-form-target="review" class="d-none mx-3 py-3">
+        <%= simple_form_for [ @hike, @review ] do | f | %>
+          <%= f.input :content %>
+          <%= f.input :rating %>
+          <%= f.submit "Leave a review", class: "btn btn-primary" %>
+        <% end %>
+        <p data-action="click->form#hideForm" class="text-center"> <i class="fas fa-chevron-up my-2"></i> </p>
+        <div class="line-sm"></div>
+      </div>
+
+    </div>
   </div>
 
-  <div>
-    <p>click here to upload an image</p>
-  </div>
-  <div class="d-none">
-    <%= simple_form_for [ @hike ] do | f | %>
-      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-      <%= f.submit "Upload an image", class: "btn btn-primary" %>
-    <% end %>
-  </div>
-
-  <h3 class="text-center">
+  <h3 class="text-center mt-5">
     <%= pluralize @hike.reviews.size, "review" %>
   </h3>
   <div class="line-sm"></div>
