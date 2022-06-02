@@ -11,17 +11,6 @@
   object-fit: cover;
 }
 
-.image-icon {
-  position: absolute;
-  z-index: 1;
-  color: rgb(169, 169, 169);
-  text-shadow: 1px 1px 8px #6e6e6e;
-  font-size: 28px;
-  top: 16px;
-  left: 88%;
-  text-align: right;
-}
-
 .text-hidden {
   overflow: hidden;
   text-overflow: ellipsis;
