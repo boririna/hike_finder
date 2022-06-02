@@ -1,19 +1,61 @@
 
 <div class="container">
 
-  <%= "⭐" * Review.average_rating(@hike) %>
+  <div class="d-flex justify-content-between my-3">
+    <%= "⭐" * Review.average_rating(@hike) %>
 
-  <%= simple_form_for [ @hike, @like ] do | f | %>
-    <%= f.submit "Like", class: "btn btn-primary" %>
-  <% end %>
+    <%= simple_form_for [ @hike, @like ] do | f | %>
+      <i onclick="myFunction(this) <% f.submit%>" class="fas fa-heart img-icon"></i>
+    <% end %>
+  </div>
 
-  <%= link_to "Edit the Hike", edit_hike_path(@hike), class: "btn our-button" %>
-  <%= link_to 'Delete', @hike, class:"btn our-button", method: :delete, data: { confirm: 'Are you sure?' } %>
+  <div class="d-flex justify-content-evenly">
+    <%= link_to "Edit the Hike", edit_hike_path(@hike), class: "btn btn-sm our-button-sm" %>
+    <%= link_to 'Delete', @hike, class:"btn btn-sm our-button-sm", method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
 
-  <br><br>
+  <div class="line"></div>
 
+  <h2 class="text-center my-3"><%= @hike.name %></h2>
+  <div class="placeholder-image"></div>
+
+  <div class="d-flex justify-content-between m-3">
+    <p>
+      <i class="fas fa-arrows-alt-h" style="color: #01B2B2"></i>
+      Length: <%= @hike.length %> km
+    </p>
+    <p>
+      <% if @hike.dog_friendly %>
+        <i class="fas fa-dog" style="color: #01B2B2"></i>
+        Dog friendly
+      <% end %>
+    </p>
+  </div>
+
+  <h3 class="text-center mb-3 mt-5">Description of your hike</h3>
+  <p class="mx-5 mb-4"><%= @hike.description %></p>
+  <div class="line"></div>
+
+  <h3 class="text-center my-3">Difficulty Level</h3>
+  <p class="mx-5 mb-4">Lorem ipsum dolor sit amet, consectetur adipisici elit,
+    sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad
+    minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex
+    ea commodi consequat. Quis aute iure </p>
+  <div class="line"></div>
+
+  <h3 class="text-center my-3">Altitude gain </h3>
+  <p class="mx-5 mb-4">Lorem ipsum dolor sit amet, consectetur adipisici elit,
+    sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad
+  </p>
+  <div class="line"></div>
+
+  <h3 class="text-center my-3">Services</h3>
+  <p class="mx-5 mb-4"><%= @hike.services %></p>
+  <div class="line"></div>
+
+  <h3 class="text-center my-3">Image gallery</h3>
   <% if @hike.photos.any? %>
-    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+    <div id="carouselExampleSlidesOnly" class="carousel slide mb-5" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
           <%= cl_image_tag @hike.photos[0].key, class:"d-block w-100", alt:"..." %>
@@ -25,58 +67,57 @@
         <% end %>
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
-<% end %>
-
-
-<h2><%= @hike.name %></h2>
-<p><i class="fas fa-arrows-alt-h" style="color: #01B2B2"></i>
-  Length: <%= @hike.length %> km</p>
-<p><% if @hike.dog_friendly %>
-  <i class="fas fa-dog" style="color: #01B2B2"></i>
-  Dog friendly
-  <% end %>
-  </p>
-
-  <h4>Description of your hike</h4>
-  <p><%= @hike.description %></p>
-
-  <h4>Difficulty Level</h4>
-  <p><%= @hike.difficulty_level %></p>
-
-  <h4>Altitude gain </h4>
-  <p><%= @hike.ascent - @hike.descent %></p>
-
-  <h4>Services</h4>
-  <p><%= @hike.services %></p>
-
-  <%= simple_form_for [ @hike, @review ] do | f | %>
-    <%= f.input :content %>
-    <%= f.input :rating %>
-    <%= f.submit "Leave a review", class: "btn btn-primary" %>
   <% end %>
 
-  <%= simple_form_for [ @hike ] do | f | %>
-    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-    <%= f.submit "Upload an image", class: "btn btn-primary" %>
-  <% end %>
+  <div>
+    <p>click here to leave a review</p>
+  </div>
+  <div class="d-none">
+    <%= simple_form_for [ @hike, @review ] do | f | %>
+      <%= f.input :content %>
+      <%= f.input :rating %>
+      <%= f.submit "Leave a review", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+  <div>
+    <p>click here to upload an image</p>
+  </div>
+  <div class="d-none">
+    <%= simple_form_for [ @hike ] do | f | %>
+      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+      <%= f.submit "Upload an image", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+
+  <h3 class="text-center">
+    <%= pluralize @hike.reviews.size, "review" %>
+  </h3>
 
   <% @reviews.each do | review | %>
     <ul>
       <li>
         <%= review.content %>
         <%= review.rating %>
-        <%= link_to 'Delete', review, class:"btn btn-primary", method: :delete, data: { confirm: 'Are you sure?' } %>
-        <%= link_to "Edit the Review", edit_review_path(review), class: "btn btn-primary" %>
+        <%= link_to 'Delete', review, class:"btn btn-sm btn-primary", method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= link_to "Edit the Review", edit_review_path(review), class: "btn btn-sm btn-primary" %>
       </li>
     </ul>
   <% end %>
 
 </div>
+
+<script>
+function myFunction(x) {
+  x.classList.toggle("fa-heart-red");
+}
+</script>
