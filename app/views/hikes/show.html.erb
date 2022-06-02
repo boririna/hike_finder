@@ -1,11 +1,13 @@
 
-<div class="container">
+<div class="container bg-white">
 
   <div class="d-flex justify-content-between my-3">
     <%= "⭐" * Review.average_rating(@hike) %>
 
     <%= simple_form_for [ @hike, @like ] do | f | %>
-      <i onclick="myFunction(this) <% f.submit%>" class="fas fa-heart img-icon"></i>
+      <%= f.submit "Like", class: "btn btn-primary" %>
+      <i onclick="myFunction(this)" class="fas fa-heart img-icon"></i>
+
     <% end %>
   </div>
 
@@ -98,18 +100,19 @@
     <% end %>
   </div>
 
-
   <h3 class="text-center">
     <%= pluralize @hike.reviews.size, "review" %>
   </h3>
+  <div class="line-sm"></div>
 
   <% @reviews.each do | review | %>
-    <ul>
-      <li>
-        <%= review.content %>
-        <%= review.rating %>
-        <%= link_to 'Delete', review, class:"btn btn-sm btn-primary", method: :delete, data: { confirm: 'Are you sure?' } %>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <p class="mx-3 "><%= review.content %></p>
+        <p class="mx-3 lighter-p "> - <%= review.user.username %></p>
+        <%= link_to 'Delete', review, class:"btn btn-sm btn-primary mx-3", method: :delete, data: { confirm: 'Are you sure?' } %>
         <%= link_to "Edit the Review", edit_review_path(review), class: "btn btn-sm btn-primary" %>
+        <div class="line"></div>
       </li>
     </ul>
   <% end %>
