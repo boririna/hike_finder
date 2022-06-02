@@ -3,10 +3,19 @@
     <h1>Welcome to Hike Finder!</h1>
 
     <div class="py-4">
-      <p class="bg-white my-3">placeholder for the location select form</p>
-      <p class="bg-white my-3">placeholder for the transportation form</p>
-
-      <%= link_to "Find hikes", hikes_path, class: "our-button my-3" %>
+      <%= form_tag hikes_path, method: :get do %>
+      <%= text_field_tag :query_address,
+        params[:query_address],
+        class: "form-control",
+        placeholder: "Enter your address"
+      %>
+      <%= text_field_tag :query_time,
+        params[:query_time],
+        class: "form-control",
+        placeholder: "travel time"
+      %>
+      <%= submit_tag "Find hikes", class: "our-button my-3" %>
+      <% end %>
     </div>
   </div>
 
