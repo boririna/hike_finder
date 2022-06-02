@@ -8,3 +8,10 @@
   font-family: "Open Sans", sans-serif;
   border: none;
 }
+
+.mapboxgl-ctrl-geocoder {
+  max-width: none;
+  width: 100%;
+  border: 1px solid lightgrey;
+  box-shadow: none;
+}
