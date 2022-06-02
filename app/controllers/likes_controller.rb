@@ -3,6 +3,7 @@ class LikesController < ApplicationController
 
   def index
     @likes = Like.all
+    @my_likes = current_user.likes
   end
 
   def create
