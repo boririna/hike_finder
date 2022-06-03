@@ -16,35 +16,35 @@
     <%= link_to 'Delete', @hike, class:"btn btn-sm our-button-sm", method: :delete, data: { confirm: 'Are you sure?' } %>
   </div>
 
-  <div class="line"></div>
+  <div class="line-sm"></div>
 
   <h2 class="text-center my-3"><%= @hike.name %></h2>
-  <div class="placeholder-image"></div>
+  <div><%= image_tag "map.jpg", class: "placeholder-image"%></div>
 
-  <div class="d-flex justify-content-between flex-wrap m-3">
-    <p class="me-2 d-flex">
-      <i class="fas fa-mountain me-1" style="color: #01B2B2"></i>
+  <div class="d-flex justify-content-between flex-wrap m-2">
+    <p class="d-flex">
+      <i class="fas fa-mountain m-1" style="color: #01B2B2"></i>
       Difficulty level: <%= @hike.difficulty_level %>
     </p>
-    <p class="ms-2 d-flex">
-      <i class="fas fa-arrows-alt-h me-1" style="color: #01B2B2"></i>
+    <p class="d-flex">
+      <i class="fas fa-arrows-alt-h m-1" style="color: #01B2B2"></i>
       Length: <%= @hike.length %> km
     </p>
-    <p class="ms-2 d-flex">
-      <i class="fas fa-arrows-alt-h me-1" style="color: #01B2B2"></i>
-      Hiking time: <%= @hike.hiking_time %> km
+    <p class="d-flex">
+      <i class="fas fa-clock m-1" style="color: #01B2B2"></i>
+      Hiking time: <%= @hike.hiking_time %>
     </p>
-    <p class="me-2 d-flex">
-    <i class="fas fa-angle-double-up me-1" style="color: #01B2B2"></i>
+    <p class="d-flex">
+    <i class="fas fa-angle-double-up m-1" style="color: #01B2B2"></i>
       Ascent: <%= @hike.ascent %>m
     </p>
-    <p class="me-2 d-flex">
-    <i class="fas fa-angle-double-up me-1" style="color: #01B2B2"></i>
+    <p class="d-flex">
+    <i class="fas fa-angle-double-down m-1" style="color: #01B2B2"></i>
       Descent: <%= @hike.descent %>m
     </p>
-    <p class="ms-2 d-flex">
+    <p class="d-flex">
       <% if @hike.dog_friendly %>
-        <i class="fas fa-dog me-1" style="color: #01B2B2"></i>
+        <i class="fas fa-dog m-1" style="color: #01B2B2"></i>
         Dog friendly
       <% end %>
     </p>
