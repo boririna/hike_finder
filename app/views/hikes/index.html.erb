@@ -6,9 +6,9 @@
     data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 
-  <%= link_to "Add a new Hike", new_hike_path, class: "btn our-button mt-3 mx-4" %>
+  <%= link_to "Add a new Hike", new_hike_path, class: "btn our-button mt-3 mx-4 d-none" %>
 
-  <div class="our-container-form" data-filter-target="filters">
+  <div class="our-container-form mt-3" data-filter-target="filters">
     <%= simple_form_for :filter, url: hikes_path, method: :get do |f| %>
         <%= f.input :difficulty_level, required: false, prompt: "Select here", collection: Hike::LEVELS %>
         <p data-filter-target="text" data-action="click->filter#displayForm">More filters...</p>
