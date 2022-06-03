@@ -1,9 +1,11 @@
-<h3 class="my-2"> Edit this review</h3>
-<%= simple_form_for [ @hike, @review ] do | f | %>
-    <%= f.input :content %>
-    <%= f.input :rating %>
-    <%= f.submit "Save changes", class: "btn btn-primary" %>
-<% end %>
-<div class="my-3">
-  <%= link_to "Back the hike", hike_path(@review.hike), class: "btn our-button" %>
+<div class="our-container text-start my-4">
+  <h3 class="my-2"> Edit this review</h3>
+  <%= simple_form_for [ @hike, @review ] do | f | %>
+      <%= f.input :content %>
+      <%= f.input :rating %>
+      <%= f.submit "Save changes", class: "btn btn-primary" %>
+  <% end %>
+  <div class="my-3">
+    <%= link_to "Back the hike", hike_path(@review.hike), class: "btn our-button" %>
+  </div>
 </div>
