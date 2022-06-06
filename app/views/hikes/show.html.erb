@@ -12,8 +12,10 @@
   </div>
 
   <div class="d-flex justify-content-evenly">
-    <%= link_to "Edit the Hike", edit_hike_path(@hike), class: "btn btn-sm our-button-sm" %>
-    <%= link_to 'Delete', @hike, class:"btn btn-sm our-button-sm", method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% if policy(@hike).edit? %>
+      <%= link_to "Edit the Hike", edit_hike_path(@hike), class: "btn btn-sm our-button-sm" %>
+      <%= link_to 'Delete', @hike, class:"btn btn-sm our-button-sm", method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
   </div>
 
   <div class="line-sm"></div>

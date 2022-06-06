@@ -5,7 +5,7 @@
     data-mapbox-markers-value="<%= @markers.to_json %>"
     data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
-  <% if policy(@hike).create? %>
+  <% if policy(@hikes).create? %>
     <%= link_to "Add a new Hike", new_hike_path, class: "btn our-button mt-3 mx-4" %>
   <% end %>
   <div class="our-container-form mt-3" data-filter-target="filters">

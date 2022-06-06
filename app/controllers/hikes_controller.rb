@@ -6,7 +6,6 @@ class HikesController < ApplicationController
 
   def index
     # @hikes = Hike.all
-
     if params[:filter].present?
       @hikes = Hike.where(difficulty_level: params[:filter][:difficulty_level])
       @hikes = @hikes.where("ascent < ?", params[:filter][:altitude_gain]) if params[:filter][:altitude_gain].present?
