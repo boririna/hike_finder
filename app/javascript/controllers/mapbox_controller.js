@@ -61,9 +61,10 @@ export default class extends Controller {
         { method: 'GET' }
       );
       const data = await query.json();
-      map.getSource('iso').setData(data);
       console.log(map)
       console.log(data)
+      map.getSource('iso').setData(data);
+
     }
 
     this.map.on('load', () => {
