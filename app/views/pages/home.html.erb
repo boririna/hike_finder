@@ -2,6 +2,19 @@
   <div class="our-container py-5">
     <h1>Welcome to Hike Finder!</h1>
 
+
+    <%# <div class="our-container-form" data-filter-target="address">
+    <%= simple_form_for :filter, url: hikes_path, method: :get do |f| %>
+      <%# <%= f.input :length, as: :range, required: false, label_html: { data: {filter_target: 'lengthLabel' }}, input_html:{ min:"0", max:"40", data:{action:"change->filter#updateLength"}}%> %>
+        <%# <input type="hidden" data-filter-target="length" id="textInput" value=" km"> %>
+      <%# <%= f.input :altitude_gain, as: :range, required: false, label_html: { data: {filter_target: 'altitudeLabel' }}, input_html:{ min:"0", max:"3000", data:{action:"change->filter#updateAltitude"}}%> %>
+        <%# <input type="hidden" data-filter-target="altitude" id="textInput" value=" m"> %>
+      <%# <p data-action="click->filter#hideForm">Less filters...</p> %>
+    <%# </div> %>
+    <%# <%= f.submit "Filter", class: "our-button" %>
+    <%# <% end %>
+  <%# </div> %>
+
     <div class="py-4">
       <%= form_tag hikes_path, method: :get do %>
       <%= text_field_tag :query_address,
@@ -18,5 +31,4 @@
       <% end %>
     </div>
   </div>
-
 </div>

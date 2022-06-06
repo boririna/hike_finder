@@ -1,28 +1,4 @@
-
-
 class HikesController < ApplicationController
-<<<<<<< HEAD
-  before_action :set_hike, only: [ :show, :edit, :update, :destroy ]
-  def index
-   if params[:query_address].present?
-    locations = Hike.all.map { |h| [h.latitude, h.longitude] }
-
-    # OpenRoute Service
-    values = {"locations":locations, "range": params[:query_time].split(',').map(&:to_i) }
-
-    headers = {
-      :accept => 'application/json, application/geo+json, application/gpx+xml, img/png; charset=utf-8',
-      :Authorization => '5b3ce3597851110001cf6248c4f7dde0d9df4d1587e4177cd11c2c6c',
-      :Content-Type => 'application/json; charset=utf-8'
-    }
-
-    response = RestClient.post 'https://api.openrouteservice.org/v2/isochrones/driving-car', values, headers
-    puts response
-
-   else
-    @hikes = Hike.all
-   end
-=======
   skip_before_action :authenticate_user!, only: %i[index show]
   before_action :set_hike, only: %i[show edit update destroy]
 
@@ -34,7 +10,12 @@ class HikesController < ApplicationController
     else
       @hikes = Hike.all
     end
->>>>>>> 97b216bed751088940a48c88c1b8f7098749a90a
+
+
+
+    @user_query_address = Geocoder.search(params[:query_address]).first.coordinates
+    @user_query_time = params[:query_time].split(',').map(&:to_i)
+
 
     @markers = @hikes.map do | hike |
       {
@@ -44,6 +25,15 @@ class HikesController < ApplicationController
         image_url: helpers.asset_url("marker.png")
       }
     end
+
+      # Add User Marker
+      user_marker = {
+        lat: @user_query_address[0],
+        lng: @user_query_address[1],
+        image_url: helpers.asset_url("user_marker.png")
+      }
+      @markers.push(user_marker)
+
   end
 
   def show
