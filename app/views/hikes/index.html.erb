@@ -30,11 +30,11 @@
 
           <% if @my_likes.find_by(hike_id: hike).present? %>
             <%= link_to like_path(@my_likes.find_by(hike_id: hike)), method: :delete do %>
-              <i onclick="myFunction(this)" class="fas fa-heart fa-heart-red img-icon"></i>
+              <i onclick="myFunction(this)" class="fas fa-heart fa-heart-red image-icon"></i>
             <% end %>
           <% else %>
             <%= link_to hike_likes_path(hike), method: :post do %>
-              <i onclick="myFunction(this)" class="fas fa-heart img-icon"></i>
+              <i onclick="myFunction(this)" class="fas fa-heart image-icon"></i>
             <% end %>
           <% end %>
 

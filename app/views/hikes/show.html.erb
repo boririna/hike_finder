@@ -1,16 +1,16 @@
 
 <div class="container bg-white">
 
-  <div class="d-flex justify-content-between mb-3 pt-3">
-    <%= "⭐" * Review.average_rating(@hike) %>
+  <div class="d-flex justify-content-between mb-3 pt-3 ms-3 font">
+    <%= "⭐" * Review.average_rating(@hike)%>
 
     <% if @like.present? %>
       <%= link_to like_path(@like), method: :delete do %>
-        <i onclick="myFunction(this)" class="fas fa-heart fa-heart-red img-icon"></i>
+        <i onclick="myFunction(this)" class="fas fa-heart fa-heart-red img-icon me-3"></i>
       <% end %>
     <% else %>
       <%= link_to hike_likes_path(@hike), method: :post do %>
-        <i onclick="myFunction(this)" class="fas fa-heart img-icon"></i>
+        <i onclick="myFunction(this)" class="fas fa-heart img-icon me-3"></i>
       <% end %>
     <% end %>
 
@@ -25,6 +25,7 @@
 
   <div class="line-sm"></div>
 
+    <h2 class="text-center my-3"><%= @hike.name %></h2>
     <% if @hike.map_photo.present? %>
       <h2 class="text-center my-3"><%= @hike.name %></h2>
       <%= cl_image_tag @hike.map_photo.key, class:"d-block w-100", alt:"hike's map" %>
