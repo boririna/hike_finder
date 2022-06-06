@@ -15,19 +15,24 @@ class ReviewsController < ApplicationController
   end
 
   def edit
+    authorize @review
   end
 
   def update
+    authorize @review
     if @review.update(review_params)
       redirect_to hike_path(@review.hike)
     else
       render "hikes/show"
     end
+
   end
 
   def destroy
+    authorize @review
     @review.destroy
     redirect_to hike_path(@review.hike)
+
   end
 
   private
