@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to hike_path(@hike), notice: "Review created successfully"
     else
-      render "hikes/show"
+      redirect_to hike_path(@hike), notice: "Review not created, please write at least 10 characters and give a rating to make a review"
     end
   end
 
