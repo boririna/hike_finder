@@ -124,7 +124,12 @@
     <ul class="list-group list-group-flush">
       <li class="list-group-item">
         <p class="mx-3 "><%= review.content %></p>
-        <p class="mx-3 lighter-p "> - <%= review.user.username %></p>
+        <div class="d-flex justify-content-between">
+          <p class="mx-3 lighter-p"> - <%= review.user.username %></p>
+          <div class="mx-2">
+            <%= "⭐" * review.rating %>
+          </div>
+        </div>
         <% if policy(review).destroy? %>
           <%= link_to 'Delete', review, class:"btn btn-sm btn-primary mx-3", method: :delete, data: { confirm: 'Are you sure?' } %>
         <% end %>

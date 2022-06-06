@@ -27,8 +27,7 @@
 
     <% @hikes.each do |hike| %>
       <div class="card-trip">
-
-          <i class="fas fa-heart image-icon"></i>
+        <i class="fas fa-heart image-icon"></i>
 
         <% if hike.photos.any? %>
           <%= cl_image_tag hike.photos[0].key, alt: "Card image cap" %>
@@ -42,7 +41,8 @@
             <div>
               <p class="card-text">Difficulty level: <%= hike.difficulty_level %></p>
               <p class="card-text">Distance: <%= hike.length %> km</p>
-              <p>Ascent: <%= hike.ascent %> m</p>
+              <p>Hiking time: <%= hike.hiking_time %></p>
+              <%= "⭐" * Review.average_rating(hike) %>
             </div>
           </div>
         <% end %>
