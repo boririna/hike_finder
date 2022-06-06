@@ -6,7 +6,6 @@ class HikesController < ApplicationController
 
   def index
     # @hikes = Hike.all
-
     if params[:filter].present?
       @hikes = Hike.where(difficulty_level: params[:filter][:difficulty_level])
       @difficulty_level = params[:filter][:difficulty_level]
@@ -15,6 +14,8 @@ class HikesController < ApplicationController
     else
       @hikes = Hike.all
     end
+
+    @my_likes = current_user.likes
 
     @markers = @hikes.map do | hike |
       {
@@ -29,27 +30,31 @@ class HikesController < ApplicationController
   def show
     @review = Review.new
     @reviews = @hike.reviews.all
-    @like = Like.new
-    @likes = @hike.likes.all
+    @like = current_user.likes.find_by(hike: @hike)
   end
 
   def new
     @hike = Hike.new
+    authorize @hike
   end
 
   def create
+
     @hike = Hike.new(hike_params)
     if @hike.save
       redirect_to hikes_path
     else
       render :new
     end
+    authorize @hike
   end
 
   def edit
+    authorize @hike
   end
 
   def update
+    authorize @hike
     if @hike.update(hike_params)
       redirect_to hike_path(@hike)
     else
@@ -58,8 +63,8 @@ class HikesController < ApplicationController
   end
 
   def destroy
+    authorize @hike
     @hike.destroy
-
     redirect_to hikes_path
   end
 
