@@ -10,7 +10,7 @@
   <% end %>
   <div class="our-container-form mt-3" data-filter-target="filters">
     <%= simple_form_for :filter, url: hikes_path, method: :get do |f| %>
-        <%= f.input :difficulty_level, required: false, prompt: "Select here", collection: Hike::LEVELS %>
+        <%= f.input :difficulty_level, required: false, prompt: "Select here", selected: @difficulty_level, collection: Hike::LEVELS %>
         <p data-filter-target="text" data-action="click->filter#displayForm">More filters...</p>
     <div class="d-none" data-filter-target="form" >
       <%= f.input :length, as: :range, required: false, label_html: { data: {filter_target: 'lengthLabel' }}, input_html:{ min:"0", max:"40", data:{action:"change->filter#updateLength"}}%>
@@ -19,8 +19,15 @@
         <input type="hidden" data-filter-target="altitude" id="textInput" value=" m">
       <p data-action="click->filter#hideForm">Less filters...</p>
     </div>
-    <%= f.submit "Filter", class: "our-button" %>
-    <% end %>
+    <div class="d-flex justify-content-between">
+      <div>
+        <%= f.submit "Search", class: "our-button" %>
+      </div>
+      <% end %>
+      <div>
+        <%= link_to "Show all hikes", hikes_path, class: "btn btn-outline-dark mt-1" %>
+      </div>
+    </div>
   </div>
 
   <div class="cards m-4">

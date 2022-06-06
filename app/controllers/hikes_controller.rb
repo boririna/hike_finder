@@ -8,6 +8,7 @@ class HikesController < ApplicationController
     # @hikes = Hike.all
     if params[:filter].present?
       @hikes = Hike.where(difficulty_level: params[:filter][:difficulty_level])
+      @difficulty_level = params[:filter][:difficulty_level]
       @hikes = @hikes.where("ascent < ?", params[:filter][:altitude_gain]) if params[:filter][:altitude_gain].present?
       @hikes = @hikes.where("length < ?", params[:filter][:length]) if params[:filter][:length].present?
     else

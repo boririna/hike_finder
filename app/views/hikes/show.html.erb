@@ -25,42 +25,49 @@
 
   <div class="line-sm"></div>
 
-    <h2 class="text-center my-3"><%= @hike.name %></h2>
-    <% if @hike.map_photo.present? %>
-      <h2 class="text-center my-3"><%= @hike.name %></h2>
-      <%= cl_image_tag @hike.map_photo.key, class:"d-block w-100", alt:"hike's map" %>
-    <%end%>
+
+  <h2 class="text-center my-3"><%= @hike.name %></h2>
+  <% if @hike.map_photo.present? %>
+    <%= cl_image_tag @hike.map_photo.key, class:"d-block w-100", alt:"..." %>
+  <% end %>
+
 
   <div class="d-flex justify-content-between flex-wrap m-2">
-    <p class="d-flex">
-      <i class="fas fa-mountain m-1" style="color: #01B2B2"></i>
-      Difficulty level: <%= @hike.difficulty_level %>
-    </p>
-    <p class="d-flex">
-      <i class="fas fa-arrows-alt-h m-1" style="color: #01B2B2"></i>
-      Length: <%= @hike.length %> km
-    </p>
-    <p class="d-flex">
-      <i class="fas fa-clock m-1" style="color: #01B2B2"></i>
-      Hiking time: <%= @hike.hiking_time %>
-    </p>
-    <p class="d-flex">
-    <i class="fas fa-angle-double-up m-1" style="color: #01B2B2"></i>
-      Ascent: <%= @hike.ascent %>m
-    </p>
-    <p class="d-flex">
-    <i class="fas fa-angle-double-down m-1" style="color: #01B2B2"></i>
-      Descent: <%= @hike.descent %>m
-    </p>
-    <p class="d-flex">
-      <% if @hike.dog_friendly %>
-        <i class="fas fa-dog m-1" style="color: #01B2B2"></i>
-        Dog friendly
-      <% end %>
-    </p>
+    <div>
+      <p class="d-flex">
+        <i class="fas fa-mountain m-1" style="color: #01B2B2"></i>
+        Difficulty level: <%= @hike.difficulty_level %>
+      </p>
+      <p class="d-flex">
+        <i class="fas fa-clock m-1" style="color: #01B2B2"></i>
+        Hiking time: <%= @hike.hiking_time %>
+      </p>
+      <p class="d-flex">
+        <i class="fas fa-arrows-alt-h m-1" style="color: #01B2B2"></i>
+        Length: <%= @hike.length %> km
+      </p>
+    </div>
+    <div>
+      <p class="d-flex">
+      <i class="fas fa-angle-double-up m-1" style="color: #01B2B2"></i>
+        Ascent: <%= @hike.ascent %>m
+      </p>
+      <p class="d-flex">
+      <i class="fas fa-angle-double-down m-1" style="color: #01B2B2"></i>
+        Descent: <%= @hike.descent %>m
+      </p>
+      <p class="d-flex">
+        <% if @hike.dog_friendly %>
+          <i class="fas fa-dog m-1" style="color: #01B2B2"></i>
+          Dog friendly
+        <% end %>
+      </p>
+    </div>
   </div>
-
-  <h3 class="text-center mb-3 mt-5">Description of your hike</h3>
+  <div class="our-container">
+    <%= link_to "Back to hikes", hikes_path, class: "btn btn-outline-dark mt-1" %>
+  </div>
+  <h3 class="text-center mb-3 mt-5">Description</h3>
   <p class="mx-5 mb-4"><%= @hike.description %></p>
   <div class="line"></div>
 
