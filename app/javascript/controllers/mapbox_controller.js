@@ -14,12 +14,12 @@ export default class extends Controller {
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v10"
     })
-    this.#addMarkersToMap()
-    this.#fitMapToMarkers()
-    this.#addIsochrones()
+    this.addMarkersToMap()
+    this.fitMapToMarkers()
+    this.addIsochrones()
   }
 
-  #addMarkersToMap() {
+  addMarkersToMap() {
     this.markersValue.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.info_window)
 
@@ -39,14 +39,13 @@ export default class extends Controller {
     })
   }
 
-  #fitMapToMarkers() {
+  fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()
     this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
   }
 
-  #addIsochrones() {
-
+  getIso = async function () {
     // Create constants to use in getIso()
     const urlBase = 'https://api.mapbox.com/isochrone/v1/mapbox/';
     let lon = this.usercoordinatesValue[0]
@@ -55,50 +54,60 @@ export default class extends Controller {
     let minutes = 30; // Set the default duration
 
     // Create a function that sets up the Isochrone API query then makes an fetch call
-    async function getIso(map) {
+    try {
       const query = await fetch(
         `${urlBase}${profile}/${lon},${lat}?contours_minutes=${minutes}&polygons=true&access_token=${mapboxgl.accessToken}`,
         { method: 'GET' }
       );
       const data = await query.json();
-      console.log(map)
-      console.log(data)
-      map.getSource('iso').setData(data);
-
+      // console.log(data)
+      console.log(data.type)
+      console.log(data.features)
+      this.map.getSource('iso').setData(data);
+    } catch (error) {
+      console.log(error)
     }
-
-    this.map.on('load', () => {
-
-      this.map.addSource('iso', {
-        type: 'geojson',
-        data: {
-          type: 'FeatureCollection',
-          features: []
-        }
-      })
-
-      this.map.addLayer(
-        {
-          id: 'isoLayer',
-          type: 'fill',
-          // Use "iso" as the data source for this layer
-          source: 'iso',
-          layout: {},
-          paint: {
-          // The fill color for the layer is set to a light purple
-          'fill-color': '#5a3fc0',
-          'fill-opacity': 0.1
-          }
-        },
-        // 'poi-label'
-      );
-
-      getIso(this.map)
-
-    })
-
   }
 
+  addIsochrones() {
+    this.map.on('load', () => {
+      try {
+        this.map.addSource('iso', {
+          type: 'geojson',
+          data: {
+            type: 'FeatureCollection',
+            features: []
+          }
+        })
+      } catch (error) {
+        console.log(error)
+      }
 
+      try {
+        this.map.addLayer(
+          {
+            id: 'isoLayer',
+            type: 'fill',
+            // Use "iso" as the data source for this layer
+            source: 'iso',
+            layout: {},
+            paint: {
+            // The fill color for the layer is set to a light purple
+            'fill-color': '#5a3fc0',
+            'fill-opacity': 0.95
+            }
+          },
+          // 'poi-label'
+        );
+      } catch (error) {
+        console.log(error)
+      }
 
+      try {
+        this.getIso()
+      } catch (error) {
+        console.log(error)
+      }
+    })
+  }
 }

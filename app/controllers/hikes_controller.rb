@@ -11,11 +11,8 @@ class HikesController < ApplicationController
       @hikes = Hike.all
     end
 
-
-
     @user_query_address = Geocoder.search(params[:query_address]).first.coordinates
     @user_query_time = params[:query_time].split(',').map(&:to_i)
-
 
     @markers = @hikes.map do | hike |
       {
