@@ -13,6 +13,7 @@
             <%= f.input :latitude %>
             <%= f.input :longitude %>
             <%= f.input :dog_friendly, as: :boolean, checked_value: true, unchecked_value: false %>
+            <%= f.input :map_photo, as: :file %>
             <%= f.input :photos, as: :file, input_html: { multiple: true } %>
             <%= f.submit "Save changes", class: "btn our-button" %>
           <% end %>

@@ -11,7 +11,7 @@
     <% end %>
   </div>
 
-  <div class="d-flex justify-content-evenly d-none">
+  <div class="d-flex justify-content-evenly">
     <%= link_to "Edit the Hike", edit_hike_path(@hike), class: "btn btn-sm our-button-sm" %>
     <%= link_to 'Delete', @hike, class:"btn btn-sm our-button-sm", method: :delete, data: { confirm: 'Are you sure?' } %>
   </div>
@@ -19,7 +19,8 @@
   <div class="line-sm"></div>
 
   <h2 class="text-center my-3"><%= @hike.name %></h2>
-  <div class="placeholder-image"></div>
+  <%= cl_image_tag @hike.map_photo.key, class:"d-block w-100", alt:"..." %>
+
 
   <div class="d-flex justify-content-between flex-wrap m-2">
     <p class="d-flex">
