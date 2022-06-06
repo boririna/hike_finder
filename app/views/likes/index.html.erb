@@ -2,7 +2,9 @@
     <% @my_likes.each do |like| %>
       <div class="card-trip">
 
-          <i class="fas fa-heart image-icon"></i>
+        <%= link_to like_path(like), method: :delete do %>
+          <i class="fas fa-heart fa-heart-red img-icon"></i>
+        <% end %>
 
         <% if like.hike.photos.any? %>
           <%= cl_image_tag like.hike.photos[0].key, alt: "Card image cap" %>

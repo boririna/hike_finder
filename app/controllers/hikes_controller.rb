@@ -14,6 +14,8 @@ class HikesController < ApplicationController
       @hikes = Hike.all
     end
 
+    @my_likes = current_user.likes
+
     @markers = @hikes.map do | hike |
       {
         lat: hike.latitude,
@@ -27,8 +29,7 @@ class HikesController < ApplicationController
   def show
     @review = Review.new
     @reviews = @hike.reviews.all
-    @like = Like.new
-    @likes = @hike.likes.all
+    @like = current_user.likes.find_by(hike: @hike)
   end
 
   def new

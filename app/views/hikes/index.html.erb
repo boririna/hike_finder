@@ -28,7 +28,16 @@
     <% @hikes.each do |hike| %>
       <div class="card-trip">
 
-          <i class="fas fa-heart image-icon"></i>
+          <% if @my_likes.find_by(hike_id: hike).present? %>
+            <%= link_to like_path(@my_likes.find_by(hike_id: hike)), method: :delete do %>
+              <i onclick="myFunction(this)" class="fas fa-heart fa-heart-red img-icon"></i>
+            <% end %>
+          <% else %>
+            <%= link_to hike_likes_path(hike), method: :post do %>
+              <i onclick="myFunction(this)" class="fas fa-heart img-icon"></i>
+            <% end %>
+          <% end %>
+
 
         <% if hike.photos.any? %>
           <%= cl_image_tag hike.photos[0].key, alt: "Card image cap" %>
@@ -50,3 +59,9 @@
     <% end %>
   </div>
 </div>
+
+<script>
+function myFunction(x) {
+  x.classList.toggle("fa-heart-red");
+}
+</script>
