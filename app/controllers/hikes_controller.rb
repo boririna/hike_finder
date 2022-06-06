@@ -6,7 +6,6 @@ class HikesController < ApplicationController
 
   def index
     # @hikes = Hike.all
-
     if params[:filter].present?
       @hikes = Hike.where(difficulty_level: params[:filter][:difficulty_level])
       @hikes = @hikes.where("ascent < ?", params[:filter][:altitude_gain]) if params[:filter][:altitude_gain].present?
@@ -34,21 +33,26 @@ class HikesController < ApplicationController
 
   def new
     @hike = Hike.new
+    authorize @hike
   end
 
   def create
+
     @hike = Hike.new(hike_params)
     if @hike.save
       redirect_to hikes_path
     else
       render :new
     end
+    authorize @hike
   end
 
   def edit
+    authorize @hike
   end
 
   def update
+    authorize @hike
     if @hike.update(hike_params)
       redirect_to hike_path(@hike)
     else
@@ -57,8 +61,8 @@ class HikesController < ApplicationController
   end
 
   def destroy
+    authorize @hike
     @hike.destroy
-
     redirect_to hikes_path
   end
 

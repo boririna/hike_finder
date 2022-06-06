@@ -12,8 +12,10 @@
   </div>
 
   <div class="d-flex justify-content-evenly">
-    <%= link_to "Edit the Hike", edit_hike_path(@hike), class: "btn btn-sm our-button-sm" %>
-    <%= link_to 'Delete', @hike, class:"btn btn-sm our-button-sm", method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% if policy(@hike).edit? %>
+      <%= link_to "Edit the Hike", edit_hike_path(@hike), class: "btn btn-sm our-button-sm" %>
+      <%= link_to 'Delete', @hike, class:"btn btn-sm our-button-sm", method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
   </div>
 
   <div class="line-sm"></div>
@@ -123,8 +125,12 @@
       <li class="list-group-item">
         <p class="mx-3 "><%= review.content %></p>
         <p class="mx-3 lighter-p "> - <%= review.user.username %></p>
-        <%= link_to 'Delete', review, class:"btn btn-sm btn-primary mx-3", method: :delete, data: { confirm: 'Are you sure?' } %>
-        <%= link_to "Edit the Review", edit_review_path(review), class: "btn btn-sm btn-primary" %>
+        <% if policy(review).destroy? %>
+          <%= link_to 'Delete', review, class:"btn btn-sm btn-primary mx-3", method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+        <% if policy(review).edit? %>
+          <%= link_to "Edit the Review", edit_review_path(review), class: "btn btn-sm btn-primary" %>
+        <% end %>
         <div class="line"></div>
       </li>
     </ul>
