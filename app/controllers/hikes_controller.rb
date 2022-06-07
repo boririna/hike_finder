@@ -36,7 +36,13 @@ class HikesController < ApplicationController
   def show
     @review = Review.new
     @reviews = @hike.reviews.all
-    @like = current_user.likes.find_by(hike: @hike)
+
+    # Search for like by current user if logged in
+    if current_user.present?
+      @like = current_user.likes.find_by(hike: @hike)
+    else
+      @like = {}
+    end
   end
 
   def new
@@ -69,8 +75,10 @@ class HikesController < ApplicationController
   end
 
   def destroy
-    authorize @hike
-    @hike.destroy
+    if current_user.present?
+      authorize @hike
+      @hike.destroy
+    end
     redirect_to hikes_path
   end
 
