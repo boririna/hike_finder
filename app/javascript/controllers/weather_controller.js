@@ -2,24 +2,24 @@ import { Controller } from "stimulus"
 
 export default class extends Controller {
   static targets = [ "output" ]
-  static values = {latitude: Number, longitude: Number}
+  static values = {
+    apiKey: String,
+    latitude: Number,
+    longitude: Number
+  }
 
   connect() {
+    this.apiKey = this.apiKeyValue
     this.lat = this.latitudeValue
     this.long = this.longitudeValue
-    console.log(typeof this.latitudeValue)
-    console.log(this.latitudeValue)
     this.fetchData()
   }
 
   fetchData = async function() {
-    const API_key="d5e4eb421780ca8fa5db991ababa42e3"
-    const URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${this.lat}&lon=${this.long}&units=metric&appid=${API_key}`
+    const URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${this.lat}&lon=${this.long}&units=metric&appid=${this.apiKey}`
     console.log(URL)
     const response = await fetch(URL)
     const data = await response.json()
-
-    // console.log(data.city.name)
 
     let daysData = data.list.map(element => {
       return {

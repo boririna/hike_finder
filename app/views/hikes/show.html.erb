@@ -4,7 +4,12 @@
   <div class="d-flex justify-content-between mb-3 pt-3 ms-3 font">
     <%= "⭐" * Review.average_rating(@hike)%>
 
-    <div data-controller="weather" data-weather-latitude-value=<%= @hike.latitude %> data-weather-longitude-value=<%= @hike.longitude %>>
+    <div
+      data-controller="weather"
+      data-weather-latitude-value=<%= @hike.latitude %>
+      data-weather-longitude-value=<%= @hike.longitude %>
+      data-weather-api-key-value="<%= ENV['OPEN_WEATHER_KEY'] %>"
+      >
       <div data-weather-target="output" class="d-flex justify-content-between">
       </div>
     </div>
