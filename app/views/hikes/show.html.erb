@@ -16,16 +16,15 @@
 
   </div>
 
-  <% if current_user.present? %>
-    <div class="d-flex justify-content-evenly">
-      <% if policy(@hike).edit? %>
-        <%= link_to "Edit the Hike", edit_hike_path(@hike), class: "btn btn-sm our-button-sm mb-3" %>
-        <%= link_to 'Delete', @hike, class:"btn btn-sm our-button-sm  mb-3", method: :delete, data: { confirm: 'Are you sure?' } %>
-      <% end %>
-    </div>
-  <% end %>
+  <div class="d-flex justify-content-evenly">
+    <% if policy(@hike).edit? %>
+      <%= link_to "Edit the Hike", edit_hike_path(@hike), class: "btn btn-sm our-button-sm mb-3" %>
+      <%= link_to 'Delete', @hike, class:"btn btn-sm our-button-sm mb-3", method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+  </div>
 
   <div class="line-sm"></div>
+
 
   <h2 class="text-center my-3"><%= @hike.name %></h2>
   <% if @hike.map_photo.present? %>
@@ -65,9 +64,9 @@
       </p>
     </div>
   </div>
-  <div class="row m-4">
-    <%= link_to "Back to hikes", hikes_path, class: "btn btn-outline-dark mt-1 col-sm-8 col-md-4" %>
-  </div>
+<div class="row m-4">
+  <%= link_to "Back to hikes", hikes_path, class: "btn btn-outline-dark mt-1 col-sm-8 col-md-4" %>
+</div>
   <h3 class="text-center mb-3 mt-5">Description</h3>
   <p class="mx-5 mb-4"><%= @hike.description %></p>
   <div class="line"></div>
@@ -146,13 +145,11 @@
             <%= "⭐" * review.rating %>
           </div>
         </div>
-        <% if current_user.present? %>
-          <% if policy(review).destroy? %>
-            <%= link_to 'Delete', review, class:"btn btn-sm btn-primary mx-3", method: :delete, data: { confirm: 'Are you sure?' } %>
-          <% end %>
-          <% if policy(review).edit? %>
-            <%= link_to "Edit the Review", edit_review_path(review), class: "btn btn-sm btn-primary" %>
-          <% end %>
+        <% if policy(review).destroy? %>
+          <%= link_to 'Delete', review, class:"btn btn-sm btn-primary mx-3", method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+        <% if policy(review).edit? %>
+          <%= link_to "Edit the Review", edit_review_path(review), class: "btn btn-sm btn-primary" %>
         <% end %>
         <div class="line"></div>
       </li>
