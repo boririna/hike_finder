@@ -8,7 +8,9 @@
 
   <% if current_user.present? %>
     <% if policy(@hikes).create? %>
-      <%= link_to "Add a new Hike", new_hike_path, class: "btn our-button mt-3 mx-4" %>
+      <div class="d-flex justify-content-center">
+        <%= link_to "Add a new Hike", new_hike_path, class: "btn our-button mt-3 mx-4" %>
+      </div>
     <% end %>
   <% end %>
   <div class="our-container-form mt-3" data-filter-target="filters">
@@ -22,9 +24,9 @@
         <input type="hidden" data-filter-target="altitude" id="textInput" value=" m">
       <p data-action="click->filter#hideForm">Less filters...</p>
     </div>
-    <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-evenly flex-column align-items-center">
       <div>
-        <%= f.submit "Search", class: "our-button" %>
+        <%= f.submit "Search", class: "our-button mb-3" %>
       </div>
       <% end %>
       <div>
