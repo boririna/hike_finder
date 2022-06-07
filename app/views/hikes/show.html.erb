@@ -27,6 +27,7 @@
 
   <div class="line-sm"></div>
 
+
   <h2 class="text-center my-3"><%= @hike.name %></h2>
   <% if @hike.map_photo.present? %>
     <%= cl_image_tag @hike.map_photo.key, class:"d-block w-100", alt:"..." %>
@@ -65,9 +66,9 @@
       </p>
     </div>
   </div>
-  <div class="row m-4">
-    <%= link_to "Back to hikes", hikes_path, class: "btn btn-outline-dark mt-1 col-sm-8 col-md-4" %>
-  </div>
+<div class="row m-4">
+  <%= link_to "Back to hikes", hikes_path, class: "btn btn-outline-dark mt-1 col-sm-8 col-md-4" %>
+</div>
   <h3 class="text-center mb-3 mt-5">Description</h3>
   <p class="mx-5 mb-4"><%= @hike.description %></p>
   <div class="line"></div>
