@@ -20,7 +20,7 @@ class HikePolicy < ApplicationPolicy
   end
 
   def update?
-    user.admin?
+    user.present? || user.admin?
   end
 
   def destroy?
