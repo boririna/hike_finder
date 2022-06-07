@@ -81,11 +81,11 @@
     <div id="carouselExampleSlidesOnly" class="carousel slide mb-3" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <%= cl_image_tag @hike.photos[0].key, class:"d-block w-100 h-60", alt:"..." %>
+          <%= cl_image_tag @hike.photos[0].key, class:"d-block w-100 height-250", alt:"..." %>
         </div>
         <% @hike.photos[1..-1].each do |photo| %>
           <div class="carousel-item">
-            <%= cl_image_tag photo.key, class:"d-block w-100 h-60", alt:"..." %>
+            <%= cl_image_tag photo.key, class:"d-block w-100 height-250", alt:"..." %>
           </div>
         <% end %>
       </div>
