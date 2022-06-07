@@ -12,9 +12,9 @@ class LikesController < ApplicationController
     @like.user = current_user
 
     if @like.save
-      redirect_to hikes_path, notice: "Like created successfully"
+      redirect_to likes_path(@hike), notice: "Like created successfully"
     else
-      redirect_to hikes_path, notice: "You already liked this hike"
+      redirect_to hike_path(@hike), notice: "You already liked this hike"
     end
   end
 

@@ -17,3 +17,11 @@
   text-align: center;
   margin: auto;
 }
+
+.our-container-center {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

@@ -7,14 +7,15 @@
       <%= text_field_tag :query_address,
         params[:query_address],
         class: "form-control",
-        placeholder: "Enter your address"
+        placeholder: "Enter your location"
       %>
+      <br>
       <%= text_field_tag :query_time,
         params[:query_time],
         class: "form-control",
-        placeholder: "travel time"
+        placeholder: "Travel time"
       %>
-      <%= submit_tag "Find hikes", class: "our-button my-3" %>
+      <%= submit_tag "Find hikes", class: "our-button px-5 my-3" %>
       <% end %>
     </div>
   </div>
