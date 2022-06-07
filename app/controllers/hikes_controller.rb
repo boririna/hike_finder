@@ -25,6 +25,17 @@ class HikesController < ApplicationController
       }
     end
 
+        # TEST MAPBOX ISOCHRONES
+        if params[:query_address].present?
+          @usercoordinates = Geocoder.search(params[:query_address]).first.coordinates
+          @user_marker = {
+            lat: @usercoordinates[0],
+            lng: @usercoordinates[1],
+            image_url: helpers.asset_url("user_marker.png")
+          }
+          @markers.push(@user_marker)
+        end
+
     # Search for hikes by current user if logged in
     if current_user.present?
       @my_likes = current_user.likes
