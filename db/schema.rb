@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 2022_06_03_083238) do
     t.string "hiking_time"
   end
 
+
   create_table "likes", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "hike_id", null: false

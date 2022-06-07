@@ -4,6 +4,16 @@
   <div class="d-flex justify-content-between mb-3 pt-3 ms-3 font">
     <%= "⭐" * Review.average_rating(@hike)%>
 
+    <div
+      data-controller="weather"
+      data-weather-latitude-value=<%= @hike.latitude %>
+      data-weather-longitude-value=<%= @hike.longitude %>
+      data-weather-api-key-value="<%= ENV['OPEN_WEATHER_KEY'] %>"
+      >
+      <div data-weather-target="output" class="d-flex justify-content-between">
+      </div>
+    </div>
+
     <% if @like.present? %>
       <%= link_to like_path(@like), method: :delete do %>
         <i onclick="myFunction(this)" class="fas fa-heart fa-heart-red img-icon me-3"></i>
@@ -16,14 +26,14 @@
 
   </div>
 
-  <% if current_user.present? %>
-    <div class="d-flex justify-content-evenly">
-      <% if policy(@hike).edit? %>
-        <%= link_to "Edit the Hike", edit_hike_path(@hike), class: "btn btn-sm our-button-sm mb-3" %>
-        <%= link_to 'Delete', @hike, class:"btn btn-sm our-button-sm  mb-3", method: :delete, data: { confirm: 'Are you sure?' } %>
-      <% end %>
-    </div>
-  <% end %>
+ <% if current_user.present? %>
+  <div class="d-flex justify-content-evenly">
+    <% if policy(@hike).edit? %>
+      <%= link_to "Edit the Hike", edit_hike_path(@hike), class: "btn btn-sm our-button-sm" %>
+      <%= link_to 'Delete', @hike, class:"btn btn-sm our-button-sm", method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+  </div>
+ <% end %>
 
   <div class="line-sm"></div>
 
