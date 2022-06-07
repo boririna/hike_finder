@@ -20,10 +20,11 @@ export default class extends Controller {
     console.log(URL)
     const response = await fetch(URL)
     const data = await response.json()
+    data.list[0].main.temp
 
     let daysData = data.list.map(element => {
       return {
-        temp: element.main.temp,
+        temp: element.main.temp.toFixed(1),
         iconId: element.weather[0].icon
       }
     })
