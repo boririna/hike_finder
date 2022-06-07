@@ -5,7 +5,7 @@ class HikesController < ApplicationController
   before_action :set_hike, only: %i[show edit update destroy]
 
   def index
-    # @hikes = Hike.all
+    # Search for hikes
     if params[:filter].present?
       @hikes = Hike.where(difficulty_level: params[:filter][:difficulty_level])
       @difficulty_level = params[:filter][:difficulty_level]
@@ -15,8 +15,7 @@ class HikesController < ApplicationController
       @hikes = Hike.all
     end
 
-    @my_likes = current_user.likes
-
+    # Create/pass hikes' markers to mapbox
     @markers = @hikes.map do | hike |
       {
         lat: hike.latitude,
@@ -25,12 +24,25 @@ class HikesController < ApplicationController
         image_url: helpers.asset_url("marker.png")
       }
     end
+
+    # Search for hikes by current user if logged in
+    if current_user.present?
+      @my_likes = current_user.likes
+    else
+      @my_likes = []
+    end
   end
 
   def show
     @review = Review.new
     @reviews = @hike.reviews.all
-    @like = current_user.likes.find_by(hike: @hike)
+
+    # Search for like by current user if logged in
+    if current_user.present?
+      @like = current_user.likes.find_by(hike: @hike)
+    else
+      @like = {}
+    end
   end
 
   def new
@@ -63,8 +75,10 @@ class HikesController < ApplicationController
   end
 
   def destroy
-    authorize @hike
-    @hike.destroy
+    if current_user.present?
+      authorize @hike
+      @hike.destroy
+    end
     redirect_to hikes_path
   end
 
