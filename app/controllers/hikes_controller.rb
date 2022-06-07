@@ -68,6 +68,11 @@ class HikesController < ApplicationController
   def update
     authorize @hike
     if @hike.update(hike_params)
+      if params[:hike][:photos].present?
+        params[:hike][:photos].each do |photo|
+          @hike.photos.attach(photo)
+        end
+      end
       redirect_to hike_path(@hike)
     else
       render :edit
@@ -85,7 +90,7 @@ class HikesController < ApplicationController
   private
 
   def hike_params
-    params.require(:hike).permit(:name, :description, :difficulty_level, :length, :ascent, :descent, :services, :latitude, :longitude, :dog_friendly, :hiking_time, :map_photo, photos: [], )
+    params.require(:hike).permit(:name, :description, :difficulty_level, :length, :ascent, :descent, :services, :latitude, :longitude, :dog_friendly, :hiking_time, :map_photo )
   end
 
   def set_hike
