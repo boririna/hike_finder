@@ -29,7 +29,9 @@
 
   <h2 class="text-center my-3"><%= @hike.name %></h2>
   <% if @hike.map_photo.present? %>
-    <%= cl_image_tag @hike.map_photo.key, class:"d-block w-100", alt:"..." %>
+    <a href="https://map.schweizmobil.ch/?lang=en&land=wanderland&route=all&layers=Wanderland&photos=yes&logo=yes&detours=yes&season=summer&resolution=84.09&E=2670960&N=1237299&bgLayer=pk" target="_blank">
+      <%= cl_image_tag @hike.map_photo.key, class:"d-block w-100", alt:"..." %>
+    </a>
   <% end %>
 
 

@@ -11,10 +11,10 @@
     <div class="offcanvas offcanvas-end our-offcanvas" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <% if user_signed_in? %>
         <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><%= current_user.username %></h5>
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
+          <h5 class="offcanvas-title my-2" id="offcanvasNavbarLabel">Hello <%= current_user.username.capitalize %></h5>
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
             <li class="nav-item">
               <%= link_to "All Hikes", hikes_path, class: "nav-link active text-dark" %>
