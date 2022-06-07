@@ -18,7 +18,8 @@
             <div>
               <p class="card-text">Difficulty level: <%= like.hike.difficulty_level %></p>
               <p class="card-text">Distance: <%= like.hike.length %> km</p>
-              <p>Ascent: <%= like.hike.ascent %> m</p>
+              <p>Hiking time: <%= like.hike.hiking_time %></p>
+              <%= "⭐" * Review.average_rating(like) %>
             </div>
           </div>
         <% end %>
