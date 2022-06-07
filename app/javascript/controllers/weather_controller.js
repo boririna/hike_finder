@@ -23,7 +23,7 @@ export default class extends Controller {
 
     let daysData = data.list.map(element => {
       return {
-        temp: element.main.temp,
+        temp: element.main.temp.toFixed(1),
         iconId: element.weather[0].icon
       }
     })
