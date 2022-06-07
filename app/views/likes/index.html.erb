@@ -1,31 +1,35 @@
-<div class="row m-4">
-  <%= link_to "Back to hikes", hikes_path, class: "btn btn-outline-dark mt-1 col-sm-8 col-md-4" %>
-</div>
-<div class="cards m-4">
-    <% @my_likes.each do |like| %>
-      <div class="card-trip">
+<div class="container bg-white py-3">
+  <div class="our-container-center">
+    <h2 class="text-center">Hikes with likes ❤</h2>
+    <%= link_to "Back to hikes", hikes_path, class: "btn btn-outline-dark mt-1 col-sm-8 col-md-4" %>
+  </div>
 
-        <%= link_to like_path(like), method: :delete do %>
-          <i class="fas fa-heart fa-heart-red image-icon"></i>
-        <% end %>
+  <div class="cards m-4">
+      <% @my_likes.each do |like| %>
+        <div class="card-trip">
 
-        <% if like.hike.photos.any? %>
-          <%= cl_image_tag like.hike.photos[0].key, alt: "Card image cap", transformation: { effect: "art:sonnet"} %>
-        <%end%>
-        <%= link_to hike_path(like.hike), class:"text-decoration-none link" do %>
-          <div class="card-trip-infos">
-            <div class="card-trip-title">
-              <h2  class="text-hidden"><%= like.hike.name %></h2>
-              <p class="text-hidden"><%= like.hike.description %></p>
+          <%= link_to like_path(like), method: :delete do %>
+            <i class="fas fa-heart fa-heart-red image-icon"></i>
+          <% end %>
+
+          <% if like.hike.photos.any? %>
+            <%= cl_image_tag like.hike.photos[0].key, alt: "Card image cap", transformation: { effect: "art:sonnet"} %>
+          <%end%>
+          <%= link_to hike_path(like.hike), class:"text-decoration-none link" do %>
+            <div class="card-trip-infos">
+              <div class="card-trip-title">
+                <h2  class="text-hidden"><%= like.hike.name %></h2>
+                <p class="text-hidden"><%= like.hike.description %></p>
+              </div>
+              <div>
+                <p class="card-text">Difficulty level: <%= like.hike.difficulty_level %></p>
+                <p class="card-text">Distance: <%= like.hike.length %> km</p>
+                <p>Hiking time: <%= like.hike.hiking_time %></p>
+                <%= "⭐" * Review.average_rating(like.hike) %>
+              </div>
             </div>
-            <div>
-              <p class="card-text">Difficulty level: <%= like.hike.difficulty_level %></p>
-              <p class="card-text">Distance: <%= like.hike.length %> km</p>
-              <p>Hiking time: <%= like.hike.hiking_time %></p>
-              <%= "⭐" * Review.average_rating(like.hike) %>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
