@@ -38,7 +38,9 @@
 
   <h2 class="text-center my-3"><%= @hike.name %></h2>
   <% if @hike.map_photo.present? %>
-    <%= cl_image_tag @hike.map_photo.key, class:"d-block w-100", alt:"..." %>
+    <a href="https://map.schweizmobil.ch/?lang=en&land=wanderland&route=all&layers=Wanderland&photos=yes&logo=yes&detours=yes&season=summer&resolution=84.09&E=2670960&N=1237299&bgLayer=pk" target="_blank">
+      <%= cl_image_tag @hike.map_photo.key, class:"d-block w-100", alt:"..." %>
+    </a>
   <% end %>
 
 
@@ -74,9 +76,9 @@
       </p>
     </div>
   </div>
-  <div class="row m-4">
-    <%= link_to "Back to hikes", hikes_path, class: "btn btn-outline-dark mt-1 col-sm-8 col-md-4" %>
-  </div>
+<div class="row m-4">
+  <%= link_to "Back to hikes", hikes_path, class: "btn btn-outline-dark mt-1 col-sm-8 col-md-4" %>
+</div>
   <h3 class="text-center mb-3 mt-5">Description</h3>
   <p class="mx-5 mb-4"><%= @hike.description %></p>
   <div class="line"></div>
@@ -90,7 +92,7 @@
     <div id="carouselExampleSlidesOnly" class="carousel slide mb-3" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <%= cl_image_tag @hike.photos[0].key, class:"d-block w-100", alt:"..." %>
+          <%= cl_image_tag @hike.photos[0].key, class:"d-block w-100 height-250", alt:"..." %>
         </div>
         <% @hike.photos[1..-1].each do |photo| %>
           <div class="carousel-item">
