@@ -5,6 +5,7 @@
     data-mapbox-markers-value="<%= @markers.to_json %>"
     data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
+
   <% if policy(@hikes).create? %>
     <%= link_to "Add a new Hike", new_hike_path, class: "btn our-button mt-3 mx-4" %>
   <% end %>
@@ -35,7 +36,7 @@
     <% @hikes.each do |hike| %>
       <div class="card-trip">
 
-          <% if @my_likes.find_by(hike_id: hike).present? %>
+          <% if @my_likes.present? && @my_likes.find_by(hike_id: hike).present? %>
             <%= link_to like_path(@my_likes.find_by(hike_id: hike)), method: :delete do %>
               <i onclick="myFunction(this)" class="fas fa-heart fa-heart-red image-icon"></i>
             <% end %>
