@@ -19,6 +19,8 @@
 }
 
 .our-container-center {
+  width: 80%;
+  overflow: auto;
   margin: auto;
   display: flex;
   flex-direction: column;

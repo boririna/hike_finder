@@ -4,15 +4,7 @@
   <div class="d-flex justify-content-between mb-3 pt-3 ms-3 font">
     <%= "⭐" * Review.average_rating(@hike)%>
 
-    <div
-      data-controller="weather"
-      data-weather-latitude-value=<%= @hike.latitude %>
-      data-weather-longitude-value=<%= @hike.longitude %>
-      data-weather-api-key-value="<%= ENV['OPEN_WEATHER_KEY'] %>"
-      >
-      <div data-weather-target="output" class="d-flex justify-content-between">
-      </div>
-    </div>
+
 
     <% if @like.present? %>
       <%= link_to like_path(@like), method: :delete do %>
@@ -26,7 +18,7 @@
 
   </div>
 
-   <% if current_user.present? %>
+  <% if current_user.present? %>
     <div class="d-flex justify-content-evenly">
       <% if policy(@hike).edit? %>
         <%= link_to "Edit the Hike", edit_hike_path(@hike), class: "btn btn-sm our-button-sm mb-3" %>
@@ -87,6 +79,18 @@
 
   <h3 class="text-center my-3">Services</h3>
   <p class="mx-5 mb-4"><%= @hike.services %></p>
+  <div class="line"></div>
+
+  <h3 class="text-center my-3">Weather forecast: 5 days</h3>
+  <div class="our-container-center"
+      data-controller="weather"
+      data-weather-latitude-value=<%= @hike.latitude %>
+      data-weather-longitude-value=<%= @hike.longitude %>
+      data-weather-api-key-value="<%= ENV['OPEN_WEATHER_KEY'] %>"
+      >
+      <div data-weather-target="output" class="d-flex justify-content-between">
+      </div>
+    </div>
   <div class="line"></div>
 
   <h3 class="text-center my-3">Image gallery</h3>
