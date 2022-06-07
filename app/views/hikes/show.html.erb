@@ -16,12 +16,14 @@
 
   </div>
 
-  <div class="d-flex justify-content-evenly">
-    <% if policy(@hike).edit? %>
-      <%= link_to "Edit the Hike", edit_hike_path(@hike), class: "btn btn-sm our-button-sm mb-3" %>
-      <%= link_to 'Delete', @hike, class:"btn btn-sm our-button-sm mb-3", method: :delete, data: { confirm: 'Are you sure?' } %>
-    <% end %>
-  </div>
+  <% if current_user.present? %>
+    <div class="d-flex justify-content-evenly">
+      <% if policy(@hike).edit? %>
+        <%= link_to "Edit the Hike", edit_hike_path(@hike), class: "btn btn-sm our-button-sm mb-3" %>
+        <%= link_to 'Delete', @hike, class:"btn btn-sm our-button-sm  mb-3", method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    </div>
+  <% end %>
 
   <div class="line-sm"></div>
 
