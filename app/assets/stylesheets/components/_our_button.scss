@@ -29,3 +29,20 @@
   background-color: #d0258b;
   color: whitesmoke;
 }
+
+.our-btn-outline-dark {
+  color: $dark-turquoise;
+  border: $dark-turquoise solid 1px;
+  border-radius: 8px;
+  padding: 12px 8px;
+  margin: 0 auto;
+}
+
+.our-btn-outline-dark:hover {
+  color: $turquoise;
+  border: $turquoise solid 1px;
+}
+
+.width-100 {
+  width: 100%;
+}
