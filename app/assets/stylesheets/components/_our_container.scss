@@ -20,10 +20,17 @@
 
 .our-container-center {
   width: 80%;
-  overflow: auto;
   margin: auto;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.our-container-weather {
+  width: 80%;
+  overflow: scroll;
+  margin: 0 auto;
   justify-content: center;
   align-items: center;
 }
