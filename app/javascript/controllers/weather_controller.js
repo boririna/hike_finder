@@ -16,16 +16,18 @@ export default class extends Controller {
   }
 
   fetchData = async function() {
+    const DAYS = ["Mon", "Tues", "Wed", "Thu", "Fri", "Sat", "Sun"]
     const URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${this.lat}&lon=${this.long}&units=metric&appid=${this.apiKey}`
     console.log(URL)
     const response = await fetch(URL)
     const data = await response.json()
-    data.list[0].main.temp
+    console.log(data[0])
 
     let daysData = data.list.map(element => {
       return {
         temp: element.main.temp.toFixed(1),
-        iconId: element.weather[0].icon
+        iconId: element.weather[0].icon,
+        day: DAYS[new Date(element.dt *1000).getDay()]
       }
     })
 
@@ -38,8 +40,9 @@ export default class extends Controller {
     filtereddaysData.forEach(data => {
       this.outputTarget.insertAdjacentHTML('beforeend',
       `<div class="d-flex flex-column align-items-center">
-        <div class="fs-5">${data.temp}°C</div>
+        <div class="fs-5">${data.day}</div>
         <img src="https://openweathermap.org/img/wn/${data.iconId}@2x.png">
+        <div class="fs-6">${data.temp}°C</div>
       </div>`
       )
     })
