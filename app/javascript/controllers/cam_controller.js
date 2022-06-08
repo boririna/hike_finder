@@ -28,8 +28,8 @@ export default class extends Controller {
         .filter(cam => cam.status === "active")
         .map(cam => {
           return {
-            cam_city: cam.location.city,
-            cam_url: cam.url.current.mobile
+            cam_url: cam.url.current.mobile,
+            cam_title: cam.title
           }
         })
         await this.upDateHTML(filteredData)
@@ -46,7 +46,7 @@ export default class extends Controller {
       this.outputTarget.insertAdjacentHTML('beforeend',
       `<li>
         <i class="fas fa-camera" style="color: #01B2B2"></i>
-        <a href="${elem.cam_url}" class="text-decoration-none text-secondary" target="_blank">${elem.cam_city}</a>
+        <a href="${elem.cam_url}" class="text-decoration-none text-secondary" target="_blank">${elem.cam_title}</a>
       </li>`
       )
     })
