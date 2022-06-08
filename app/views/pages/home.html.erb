@@ -1,13 +1,12 @@
 <div class="background-heigth">
   <div class="our-container py-5">
-    <h1>Welcome to Hike Finder!</h1>
-
+    <h1 class="mt-4">Welcome to </br>Hike Finder</h1>
     <div class="py-4">
       <%= form_tag hikes_path, method: :get do %>
       <%= text_field_tag :query_address,
         params[:query_address],
         class: "form-control",
-        placeholder: "Enter your location"
+        placeholder: "Enter your current location"
       %>
       <br>
       <%= text_field_tag :query_distance,
