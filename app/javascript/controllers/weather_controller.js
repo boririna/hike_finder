@@ -18,10 +18,8 @@ export default class extends Controller {
   fetchData = async function() {
     const DAYS = ["Mon", "Tues", "Wed", "Thu", "Fri", "Sat", "Sun"]
     const URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${this.lat}&lon=${this.long}&units=metric&appid=${this.apiKey}`
-    console.log(URL)
     const response = await fetch(URL)
     const data = await response.json()
-    console.log(data[0])
 
     let daysData = data.list.map(element => {
       return {
