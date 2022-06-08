@@ -20,6 +20,7 @@ export default class extends Controller {
     console.log(URL)
     const response = await fetch(URL)
     const data = await response.json()
+    data.list[0].main.temp
 
     let daysData = data.list.map(element => {
       return {
