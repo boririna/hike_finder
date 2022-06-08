@@ -53,7 +53,7 @@
           <% end %>
 
         <% if hike.photos.any? %>
-          <%= cl_image_tag hike.photos[0].key, alt: "Card image cap", transformation: { effect: "art:hokusai"} %>
+          <%= cl_image_tag hike.photos[0].key, alt: "Card image cap"%>
         <%end%>
         <%= link_to hike_path(hike), class:"text-decoration-none link" do %>
           <div class="card-trip-infos">

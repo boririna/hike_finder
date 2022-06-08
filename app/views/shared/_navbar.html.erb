@@ -14,8 +14,9 @@
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-          <h5 class="offcanvas-title my-2" id="offcanvasNavbarLabel">Hello <%= current_user.username.capitalize %></h5>
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="offcanvas-title my-2 me-2" id="offcanvasNavbarLabel"><strong>Hello <%= current_user.username.capitalize %> </strong></li>
+            <br>
             <li class="nav-item">
               <%= link_to "All Hikes", hikes_path, class: "nav-link active text-dark" %>
             </li>
