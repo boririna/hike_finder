@@ -26,11 +26,13 @@
     </div>
     <div class="d-flex justify-content-between align-items-center">
       <div>
-        <%= f.submit "Search", class: "our-button" %>
+        <%= button_tag type: 'submit', class: "button our-button" do %>
+          <div> <i class="fa fa-search" aria-hidden="true"></i> Search</div>
+        <% end %>
       </div>
       <% end %>
       <div>
-        <%= link_to "Show all hikes", hikes_path, class: "btn btn-outline-dark" %>
+        <%= link_to "Show all hikes", hikes_path, class: "btn our-btn-outline-dark" %>
       </div>
     </div>
   </div>
