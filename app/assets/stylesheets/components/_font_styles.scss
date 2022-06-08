@@ -1,7 +1,30 @@
+h1, h2, h3 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+h1 {
+  font-weight: 400;
+  font-size: 40px;
+  letter-spacing: 2px;
+}
+
+h2 {
+  font-weight: normal;
+}
+
+h3 {
+  font-weight:300;
+}
+
 .lighter-p {
   color: $dark-turquoise;
 }
 
 .font {
   font-size: 32px;
+}
+
+#text-homepage {
+  color: white;
+  font-size: 20px;
 }
