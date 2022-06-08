@@ -7,4 +7,7 @@ class Hike < ApplicationRecord
   has_many_attached :photos
 
   validates :difficulty_level, inclusion: { in: LEVELS }
+
+  reverse_geocoded_by :latitude, :longitude
+  after_validation :reverse_geocode
 end
