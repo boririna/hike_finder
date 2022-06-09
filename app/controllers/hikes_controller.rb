@@ -15,20 +15,18 @@ class HikesController < ApplicationController
 
     # Search for like by user location and travel distance
     if params[:query_address].present? && params[:query_distance].present?
-      Hike.search
       # Select Hikes based on distance (km) from user_location
       @user_location = Geocoder.search(params[:query_address]).first.coordinates
       @hikes = Hike.near(@user_location, params[:query_distance].to_i)
-      if @hikes.to_a.count == 0
-        @hikes = Hike.all
-        flash.now[:notice] = "Displaying all hikes, no hike found at #{params[:query_distance]} km from #{params[:query_address].capitalize}."
-      else
-        @count = @hikes.to_a.count
-        @hike_str = @count > 1 ? "hikes" : "hike"
-        flash.now[:notice] = "Displaying #{@count} #{@hike_str} within #{params[:query_distance]} km from #{params[:query_address].capitalize}."
-      end
+        if @hikes.to_a.count == 0
+          @hikes = Hike.all
+          flash.now[:notice] = "Displaying all hikes, no hike found at #{params[:query_distance]} km from #{params[:query_address].capitalize}."
+        else
+          @count = @hikes.to_a.count
+          @hike_str = @count > 1 ? "hikes" : "hike"
+          flash.now[:notice] = "Displaying #{@count} #{@hike_str} within #{params[:query_distance]} km from #{params[:query_address].capitalize}."
+        end
     end
-
     # Create/pass hikes' markers to mapbox
     @markers = @hikes.map do | hike |
     {
@@ -90,6 +88,7 @@ class HikesController < ApplicationController
 
   def update
     authorize @hike
+
     #if @hike.update(hike_params)
     if params[:hike][:photos].present?
       params[:hike][:photos].each do |photo|

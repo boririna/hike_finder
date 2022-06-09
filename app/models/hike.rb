@@ -8,8 +8,9 @@ class Hike < ApplicationRecord
 
   validates :difficulty_level, inclusion: { in: LEVELS }
 
-  def self.search
-    reverse_geocoded_by :latitude, :longitude
-    after_validation :reverse_geocode
-  end
+  reverse_geocoded_by :latitude, :longitude, :on => :near
+  after_validation :reverse_geocode, :on => :near
+
+
+
 end
