@@ -1,6 +1,6 @@
 class HikesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
-  before_action :set_hike, only: %i[show edit update destroy]
+  before_action :set_hike, only: %i[show edit update destroy add_image]
 
   def index
     # Search for hikes
@@ -88,7 +88,11 @@ class HikesController < ApplicationController
 
   def update
     authorize @hike
+    @hike.update(hike_params)
+    redirect_to hike_path(@hike)
+  end
 
+  def add_image
     if params[:hike][:photos].present?
       params[:hike][:photos].each do |photo|
         @hike.photos.attach(photo)
@@ -97,9 +101,6 @@ class HikesController < ApplicationController
     else
       render :edit
     end
-
-    @hike.update(hike_params)
-    redirect_to hike_path(@hike)
   end
 
   def destroy
@@ -113,7 +114,7 @@ class HikesController < ApplicationController
   private
 
   def hike_params
-    params.require(:hike).permit(:name, :description, :difficulty_level, :length, :ascent, :descent, :services, :latitude, :longitude, :dog_friendly, :hiking_time, :map_photo, :photos )
+    params.require(:hike).permit(:name, :description, :difficulty_level, :length, :ascent, :descent, :services, :latitude, :longitude, :dog_friendly, :hiking_time, :map_photo, photos: [] )
   end
 
   def set_hike
