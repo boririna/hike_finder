@@ -15,7 +15,6 @@ class HikesController < ApplicationController
 
     # Search for like by user location and travel distance
     if params[:query_address].present? && params[:query_distance].present?
-      Hike.search
       # Select Hikes based on distance (km) from user_location
       @user_location = Geocoder.search(params[:query_address]).first.coordinates
       @hikes = Hike.near(@user_location, params[:query_distance].to_i)
