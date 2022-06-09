@@ -8,3 +8,20 @@
 legend ~ div.form-check:first-of-type {
   clear: left;
 }
+
+
+.our-form-control {
+  padding: 8px;
+  width: 100%;
+  border-radius: 8px;
+  margin: 8px auto;
+  background-color: rgba($color: #ffffff, $alpha: 0.8);
+  color: rgb(14, 15, 61);
+  opacity: 100%;
+  border: white solid 1px;
+}
+
+.our-form-control::placeholder {
+  color: rgb(14, 15, 61);
+  opacity: 90%;
+}
