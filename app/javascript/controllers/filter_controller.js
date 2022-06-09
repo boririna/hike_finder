@@ -15,12 +15,12 @@ export default class extends Controller {
 
   updateLength(e) {
     this.lengthTarget.value = e.target.value
-    this.lengthLabelTarget.innerHTML = "Length: " + e.target.value +"km"
+    this.lengthLabelTarget.innerHTML = "Length: " + e.target.value +" km"
   }
 
   updateAltitude(e) {
     this.altitudeTarget.value = e.target.value
-    this.altitudeLabelTarget.innerHTML = "Altitude gain: " + e.target.value +"m"
+    this.altitudeLabelTarget.innerHTML = "Altitude gain: " + e.target.value +" m"
   }
 
 }
