@@ -142,7 +142,7 @@
         <p class="me-3 text-end" data-form-target="imagetext" data-action="click->form#displayImage">Upload an image <i class="fas fa-chevron-down"></i></p>
       </div>
       <div data-form-target="image" class="d-none mx-3 py-3">
-        <%= simple_form_for [ @hike ] do | f | %>
+        <%= simple_form_for [ @hike ], :url => add_image_hike_path, :method => :put, multipart: true do | f | %>
           <%= f.input :photos, as: :file, input_html: { multiple: true } %>
           <%= f.submit "Upload an image", class: "btn btn-primary" %>
         <% end %>
