@@ -18,3 +18,12 @@
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   border: white 1px solid;
 }
+
+.profile-img {
+  border-radius: 8px;
+  height: 250px;
+  width: 250px;
+  object-fit: cover;
+  object-position: left;
+  margin: auto;
+}
