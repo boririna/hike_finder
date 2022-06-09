@@ -1,6 +1,19 @@
 .alert {
   position: fixed;
   bottom: 16px;
-  right: 16px;
+  right: 8px;
+  width: 80%;
   z-index: 1000;
+  border-radius: 8px;
+  background-color: $pale-pink;
+  border: none;
+  color: $dark-gray;
+  margin: auto;
+  box-shadow: 2px 3px 5px $grey;
+  opacity: 95%;
+}
+
+.btn-close {
+  font-size: 12px;
+  padding: auto;
 }

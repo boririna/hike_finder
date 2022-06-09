@@ -88,12 +88,12 @@ class HikesController < ApplicationController
 
   def update
     authorize @hike
-    # if @hike.update(hike_params)
-      if params[:hike][:photos].present?
-        params[:hike][:photos].each do |photo|
-          @hike.photos.attach(photo)
-        end
-      # end
+
+    #if @hike.update(hike_params)
+    if params[:hike][:photos].present?
+      params[:hike][:photos].each do |photo|
+        @hike.photos.attach(photo)
+      end
       redirect_to hike_path(@hike)
     else
       render :edit

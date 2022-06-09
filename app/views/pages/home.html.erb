@@ -1,4 +1,4 @@
-<div class="background-heigth">
+<div class="background-heigth d-flex flex-column justify-content-center">
   <div class="our-container py-5">
     <h1 class="mt-4">Welcome to </br>Hike Finder</h1>
     <div class="py-4">
@@ -12,7 +12,7 @@
       <%= text_field_tag :query_distance,
         params[:query_distance],
         class: "form-control",
-        placeholder: "Distance"
+        placeholder: "Distance (km) from your location"
       %>
       <%= submit_tag "Find hikes", class: "our-button px-5 my-3" %>
       <% end %>
