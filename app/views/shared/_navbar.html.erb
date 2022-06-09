@@ -26,6 +26,10 @@
             <li class="nav-item">
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link active text-dark" %>
             </li>
+            <br>
+            <li class="nav-item">
+              <%= link_to "About us", about_path, class: "nav-link active text-dark" %>
+            </li>
           </ul>
         </div>
       <% else %>
