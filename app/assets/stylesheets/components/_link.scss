@@ -7,3 +7,12 @@
   color: #003937;
   border: none;
 }
+
+.about-links {
+  color: $turquoise;
+  font-size: 32px;
+}
+
+.about-links:hover {
+  color: $pink;
+}
