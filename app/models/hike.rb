@@ -10,7 +10,4 @@ class Hike < ApplicationRecord
 
   reverse_geocoded_by :latitude, :longitude, :on => :near
   after_validation :reverse_geocode, :on => :near
-
-
-
 end
