@@ -9,7 +9,7 @@ https://swisshikefinder.herokuapp.com/
 
 🗺️ Visualize dozens of Hikes on an interactive map
 
-ℹ️🌞 Access info about all Hikes, including 5-days Weather Forecast & Webcams around
+🌞 Access info about all Hikes, including 5-days Weather Forecast & Webcams around
 
 🔎 Filter Hikes based on Difficulty Level, Length, Altitude gain
 
