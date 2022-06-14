@@ -16,9 +16,11 @@ https://swisshikefinder.herokuapp.com/
 💗 Save the Hikes you like, upload new pics and leave a comment to help other Hikers find their way !
 
 ## API
-https://www.mapbox.com
-https://openweathermap.org
-https://api.windy.com
+🗺️ https://www.mapbox.com
+
+🌞 https://openweathermap.org
+
+📷 https://api.windy.com
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
