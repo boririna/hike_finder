@@ -15,8 +15,6 @@ https://swisshikefinder.herokuapp.com/
 
 💗 Save the Hikes you like, upload new pics and leave a comment to help other Hikers find their way !
 
-https://user-images.githubusercontent.com/99029880/174056556-cc499c89-308c-4a8e-8dee-42eec4fb93ef.mp4
-
 ## API
 🗺️ https://www.mapbox.com
 
