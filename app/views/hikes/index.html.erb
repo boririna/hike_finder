@@ -17,24 +17,31 @@
   <div class="our-container-form mt-3" data-filter-target="filters">
     <%= simple_form_for :filter, url: hikes_path, method: :get do |f| %>
       <%= f.input :difficulty_level, required: false, prompt: "Select here", selected: @difficulty_level, collection: Hike::LEVELS %>
-      <p data-filter-target="text" data-action="click->filter#displayForm">More filters...</p>
+
+      <p class="more-less" data-filter-target="text" data-action="click->filter#displayForm">
+        <i class="fa fa-chevron-down fw-bold" aria-hidden="true"></i>
+        More filters...
+      </p>
 
       <div class="d-none" data-filter-target="form">
-        <%= f.input :length, as: :range, required: false, label_html: { data: {filter_target: 'lengthLabel' }}, input_html:{ min:"0", max:"40", data:{action:"change->filter#updateLength"}}%>
+        <%= f.input :length, as: :range, required: false, label_html: { data: {filter_target: 'lengthLabel' }}, input_html:{ min:"0", max:"40", value: 40, data:{action:"change->filter#updateLength"}}%>
           <input type="hidden" data-filter-target="length" id="textInput" value=" km">
         <div class="length-edge">
           <p>0 km</p>
           <p>40 km</p>
         </div>
 
-        <%= f.input :altitude_gain, as: :range, required: false, label_html: { data: {filter_target: 'altitudeLabel' }}, input_html:{ min:"0", max:"3000", data:{action:"change->filter#updateAltitude"}}%>
+        <%= f.input :altitude_gain, as: :range, required: false, label_html: { data: {filter_target: 'altitudeLabel' }}, input_html:{ min:"0", max:"3000", value: 3000, data:{action:"change->filter#updateAltitude"}}%>
           <input type="hidden" data-filter-target="altitude" id="textInput" value=" m">
         <div class="altitude-edge">
           <p>0 m</p>
           <p>3000 m</p>
         </div>
 
-        <p data-action="click->filter#hideForm">Less filters...</p>
+        <p class="more-less" data-action="click->filter#hideForm">
+          <i class="fa fa-chevron-up fw-bold fw-bold" aria-hidden="true"></i>
+          Less filters...
+        </p>
       </div>
 
       <div class="d-flex justify-content-between align-items-center">
