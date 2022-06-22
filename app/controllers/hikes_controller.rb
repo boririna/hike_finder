@@ -3,8 +3,11 @@ class HikesController < ApplicationController
   before_action :set_hike, only: %i[show edit update destroy add_image]
 
   def index
-    # Search for hikes
-    if params[:filter].present?
+
+    # Search and filter hikes
+    if params[:query].present?
+      @hikes = Hike.where("name ILIKE ?", "%#{params[:query]}%")
+    elsif params[:filter].present?
       @hikes = Hike.where(difficulty_level: params[:filter][:difficulty_level])
       @difficulty_level = params[:filter][:difficulty_level]
       @hikes = @hikes.where("length < ?", params[:filter][:length]) if params[:filter][:length].present?
@@ -27,6 +30,7 @@ class HikesController < ApplicationController
           flash.now[:notice] = "Displaying #{@count} #{@hike_str} within #{params[:query_distance]} km from #{params[:query_address].capitalize}."
         end
     end
+
     # Create/pass hikes' markers to mapbox
     @markers = @hikes.map do | hike |
     {
