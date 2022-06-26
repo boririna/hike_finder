@@ -1,15 +1,17 @@
 <div class="container bg-white pb-3" data-controller="filter">
   <div class="d-flex justify-content-between align-items-center">
-    <div class="flex-grow-1 me-3">
-    <%= form_tag hikes_path, method: :get do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control my-3",
-        placeholder: "Find a hike"
-      %>
+    <div class="flex-grow-1 me-2">
+      <%= form_tag hikes_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control my-3",
+          placeholder: "Find a hike"
+        %>
       </div>
       <div>
-        <%= submit_tag "Search", class: "button our-button my-3" %>
+        <%= button_tag(class: "btn our-searchbtn-outline-dark my-3") do %>
+          <i class="fa fa-search" aria-hidden="true"></i>
+        <% end %>
       </div>
     <% end %>
   </div>
