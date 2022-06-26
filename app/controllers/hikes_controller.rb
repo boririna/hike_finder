@@ -6,7 +6,8 @@ class HikesController < ApplicationController
 
     # Search and filter hikes
     if params[:query].present?
-      @hikes = Hike.where("name ILIKE ?", "%#{params[:query]}%")
+      @hikes = Hike.search_name(params[:query])
+      # @hikes = Hike.where("name ILIKE ?", "%#{params[:query]}%")
     elsif params[:filter].present?
       @hikes = Hike.where(difficulty_level: params[:filter][:difficulty_level])
       @difficulty_level = params[:filter][:difficulty_level]

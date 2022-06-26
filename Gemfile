@@ -8,6 +8,8 @@ gem 'rails', '~> 6.1.6'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 
+gem 'pg_search', '~> 2.3', '>= 2.3.2'
+
 gem 'pundit'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'

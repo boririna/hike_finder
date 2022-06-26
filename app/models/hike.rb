@@ -10,4 +10,9 @@ class Hike < ApplicationRecord
 
   reverse_geocoded_by :latitude, :longitude, :on => :near
   after_validation :reverse_geocode, :on => :near
+
+  include PgSearch::Model
+  pg_search_scope :search_name,
+                  against: :name,
+                  using: { tsearch: { dictionary: 'german' } }
 end
