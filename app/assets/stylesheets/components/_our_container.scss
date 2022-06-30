@@ -25,6 +25,15 @@
   margin: auto;
 }
 
+.our-container-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 80%;
+  text-align: center;
+  margin: auto;
+}
+
 .our-container-center {
   width: 80%;
   margin: auto;
