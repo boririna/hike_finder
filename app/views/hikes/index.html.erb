@@ -1,5 +1,20 @@
 <div class="container bg-white pb-3" data-controller="filter">
-
+  <div class="d-flex justify-content-between align-items-center">
+    <div class="flex-grow-1 me-2">
+      <%= form_tag hikes_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control my-3",
+          placeholder: "Find a hike"
+        %>
+    </div>
+    <div>
+      <%= button_tag(class: "btn our-searchbtn-outline-dark my-3") do %>
+        <i class="fa fa-search" aria-hidden="true"></i>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
   <div style="width: 100%; height: 300px;"
     data-controller="mapbox"
     data-mapbox-markers-value="<%= @markers.to_json %>"
@@ -15,6 +30,9 @@
   <% end %>
 
   <div class="our-container-form mt-3" data-filter-target="filters">
+
+
+
     <%= simple_form_for :filter, url: hikes_path, method: :get do |f| %>
       <%= f.input :difficulty_level, required: false, prompt: "Select here", selected: @difficulty_level, collection: Hike::LEVELS %>
 
@@ -47,7 +65,8 @@
       <div class="d-flex justify-content-between align-items-center">
         <div>
           <%= button_tag type: 'submit', class: "button our-button" do %>
-            <div> <i class="fa fa-search" aria-hidden="true"></i> Search</div>
+            <div><i class="fa fa-filter" aria-hidden="true"></i> Filter</div>
+            <%# <div><i class="fa fa-search" aria-hidden="true"></i> Filter</div> %>
           <% end %>
         </div>
 
