@@ -28,3 +28,7 @@
   border: 1px solid lightgrey;
   box-shadow: none;
 }
+
+*:focus {
+  outline: none;
+}
