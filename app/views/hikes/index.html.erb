@@ -1,20 +1,14 @@
 <div class="container bg-white pb-3" data-controller="filter">
-  <div class="d-flex justify-content-between align-items-center">
-    <div class="flex-grow-1 me-2">
-      <%= form_tag hikes_path, method: :get do %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control my-3",
-          placeholder: "Find a hike"
-        %>
-    </div>
-    <div>
-      <%= button_tag(class: "btn our-searchbtn-outline-dark my-3") do %>
-        <i class="fa fa-search" aria-hidden="true"></i>
-      <% end %>
-    </div>
+  <%= form_tag( hikes_path, method: :get, class: "d-flex flex-grow-1") do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control my-3 me-2",
+      placeholder: "Find a hike"
+    %>
+    <%= button_tag(class: "btn our-searchbtn-outline-dark my-3") do %>
+      <i class="fa fa-search" aria-hidden="true"></i>
     <% end %>
-  </div>
+  <% end %>
   <div style="width: 100%; height: 300px;"
     data-controller="mapbox"
     data-mapbox-markers-value="<%= @markers.to_json %>"
