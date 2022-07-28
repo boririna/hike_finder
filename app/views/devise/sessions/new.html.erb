@@ -2,8 +2,13 @@
   <div class="our-container-form">
     <div class="row">
       <div class="col-sm-6 col-md-6 col-lg-6 p-4 bg-white rounded my-3">
-        <h2>Log in</h2>
-
+        <div class="d-flex">
+          <h2>Log in</h2>
+          <h2 class="mx-3"><%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+            <%= link_to "Sign up", new_registration_path(resource_name), class:"signup-login-link" %><br />
+          <% end %>
+          </h2>
+        </div>
         <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="form-inputs">
             <%= f.input :email,
