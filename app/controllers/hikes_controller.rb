@@ -14,7 +14,7 @@ class HikesController < ApplicationController
       @hikes = @hikes.where("length < ?", params[:filter][:length]) if params[:filter][:length].present?
       @hikes = @hikes.where("ascent < ?", params[:filter][:altitude_gain]) if params[:filter][:altitude_gain].present?
     else
-      @hikes = Hike.all
+      @hikes = Hike.all.order('created_at desc')
     end
 
     # Search for like by user location and travel distance
