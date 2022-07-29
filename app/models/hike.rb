@@ -13,6 +13,7 @@ class Hike < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :search_name,
-                  against: :name,
+                  against: [ :name, :description, :services, :difficulty_level ],
+                  order_within_rank: "hikes.created_at DESC",
                   using: { tsearch: { dictionary: 'german' } }
 end
