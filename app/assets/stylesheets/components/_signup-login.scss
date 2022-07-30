@@ -1,4 +1,9 @@
 .nav-tabs .nav-link.active {
   background-color: white;
   border-bottom: 1px solid white;
+  border-radius: 5px 5px 0 0;
+}
+
+.nav-link:hover {
+  border-radius: 5px 5px 0 0;
 }
