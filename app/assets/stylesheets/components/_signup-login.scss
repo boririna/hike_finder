@@ -2,8 +2,22 @@
   background-color: white;
   border-bottom: 1px solid white;
   border-radius: 5px 5px 0 0;
+  color: $turquoise;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 24px;
+  font-weight: 500;
 }
 
-.nav-link:hover {
+.nav-tabs .nav-link {
+  color: $turquoise;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+}
+
+.nav-tabs .nav-link:hover {
   border-radius: 5px 5px 0 0;
+  color: $turquoise;
+  font-weight: 500;
+  font-size: 24px;
 }

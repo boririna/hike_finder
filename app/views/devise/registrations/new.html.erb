@@ -2,47 +2,40 @@
   <div class="our-container-form">
     <div class="row">
       <div class="col-sm-8 col-md-8 col-lg-6 p-4 bg-white rounded my-5">
-        <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
-              <li class="nav-item" role="presentation">
-                <button class="nav-link" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">
-                  <h2 class="">
-                    <%- if controller_name != 'sessions' %>
-                      <%= link_to "Log in", new_session_path(resource_name), class:"signup-login-link" %>
-                    <% end %>
-                  </h2>
-                </button>
-              </li>
-              <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">
-                  <h2>Sign up</h2>
-                </button>
-              </li>
-            </ul>
-        <div class="tab-content mt-3" id="myTabContent">
-          <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-            <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-              <%= f.error_notification %>
-
-              <div class="form-inputs">
-                <%= f.input :username,
-                            required: true,
-                            autofocus: true,
-                            input_html: { autocomplete: "username" }%>
-                <%= f.input :email,
-                            required: true,
-                            input_html: { autocomplete: "email" }%>
-                <%= f.input :password,
-                            required: true,
-                            hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                            input_html: { autocomplete: "new-password" } %>
-                <%= f.input :password_confirmation,
-                            required: true,
-                            input_html: { autocomplete: "new-password" } %>
-              </div>
-              <%= f.button :submit, "Sign up", class:"our-button" %>
-
+        <ul class="nav nav-tabs nav-justified">
+          <li class="nav-item">
+            <%- if controller_name != 'sessions' %>
+              <%= link_to "Log in", new_session_path(resource_name), class:"nav-link" %>
             <% end %>
-          </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">
+              Sign up
+            </a>
+          </li>
+        </ul>
+        <div class="mt-3">
+          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= f.error_notification %>
+
+            <div class="form-inputs">
+              <%= f.input :username,
+                          required: true,
+                          autofocus: true,
+                          input_html: { autocomplete: "username" }%>
+              <%= f.input :email,
+                          required: true,
+                          input_html: { autocomplete: "email" }%>
+              <%= f.input :password,
+                          required: true,
+                          hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                          input_html: { autocomplete: "new-password" } %>
+              <%= f.input :password_confirmation,
+                          required: true,
+                          input_html: { autocomplete: "new-password" } %>
+            </div>
+            <%= f.button :submit, "Sign up", class:"our-button" %>
+          <% end %>
         </div>
       </div>
     </div>
