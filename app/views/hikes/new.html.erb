@@ -1,19 +1,21 @@
-<div class="our-container text-start my-4">
-  <h3 class="my-2"> Add a new hike</h3>
-    <%= simple_form_for [ @hike ] do |f| %>
-      <%= f.input :name %>
-      <%= f.input :description %>
-      <%= f.input :difficulty_level, collection: ["easy", "medium", "hard", "experienced"]%>
-      <%= f.input :length %>
-      <%= f.input :hiking_time %>
-      <%= f.input :ascent %>
-      <%= f.input :descent %>
-      <%= f.input :services %>
-      <%= f.input :latitude %>
-      <%= f.input :longitude %>
-      <%= f.input :dog_friendly, as: :boolean, checked_value: true, unchecked_value: false %>
-      <%= f.input :map_photo, as: :file %>
-      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-      <%= f.submit "Add Hike", class: "btn btn-primary" %>
-    <% end %>
+<div class="container bg-white">
+  <div class="our-container text-start py-4">
+    <h3 class="my-2">Add a new hike</h3>
+      <%= simple_form_for [ @hike ] do |f| %>
+        <%= f.input :name %>
+        <%= f.input :description %>
+        <%= f.input :difficulty_level, collection: ["easy", "medium", "hard", "experienced"]%>
+        <%= f.input :length %>
+        <%= f.input :hiking_time %>
+        <%= f.input :ascent %>
+        <%= f.input :descent %>
+        <%= f.input :services %>
+        <%= f.input :latitude %>
+        <%= f.input :longitude %>
+        <%= f.input :dog_friendly, as: :boolean, checked_value: true, unchecked_value: false %>
+        <%= f.input :map_photo, as: :file %>
+        <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+        <%= f.submit "Add Hike", class: "btn our-button" %>
+      <% end %>
+  </div>
 </div>

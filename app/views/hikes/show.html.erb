@@ -4,8 +4,6 @@
   <div class="d-flex justify-content-between mb-3 pt-3 ms-3 font">
     <%= "⭐" * Review.average_rating(@hike)%>
 
-
-
     <% if @like.present? %>
       <%= link_to like_path(@like), method: :delete do %>
         <i onclick="myFunction(this)" class="fas fa-heart fa-heart-red img-icon me-3"></i>
@@ -29,20 +27,18 @@
 
   <div class="line-sm"></div>
 
-
   <h2 class="text-center my-3"><%= @hike.name %></h2>
   <% if @hike.map_photo.present? %>
     <a href="https://map.schweizmobil.ch/?lang=en&land=wanderland&route=all&layers=Wanderland&photos=yes&logo=yes&detours=yes&season=summer&resolution=84.09&E=2670960&N=1237299&bgLayer=pk" target="_blank">
-      <%= cl_image_tag @hike.map_photo.key, class:"d-block w-100", alt:"..." %>
+      <%= cl_image_tag @hike.map_photo.key, class:"d-block mw-100 mx-auto", alt:"..." %>
     </a>
   <% end %>
 
+    <div class="our-container-spec mt-2">
 
-  <div class="d-flex justify-content-between flex-wrap m-2">
-    <div>
       <p class="d-flex">
         <i class="fas fa-mountain m-1" style="color: #01B2B2"></i>
-        Difficulty level: <%= @hike.difficulty_level %>
+        Difficulty: <%= @hike.difficulty_level %>
       </p>
       <p class="d-flex">
         <i class="fas fa-clock m-1" style="color: #01B2B2"></i>
@@ -50,10 +46,8 @@
       </p>
       <p class="d-flex">
         <i class="fas fa-arrows-alt-h m-1" style="color: #01B2B2"></i>
-        Length: <%= @hike.length %> km
+        Length: <%= @hike.length %>km
       </p>
-    </div>
-    <div>
       <p class="d-flex">
       <i class="fas fa-angle-double-up m-1" style="color: #01B2B2"></i>
         Ascent: <%= @hike.ascent %>m
@@ -68,13 +62,14 @@
           Dog friendly
         <% end %>
       </p>
+
     </div>
+
+  <div class="row px-4 d-flex justify-content-center align-items-center">
+    <%= link_to hikes_path do %>
+      <div class="btn our-btn-outline-dark mt-1 col-md-4 width-100"><i class="fas fa-undo"></i> Back to hikes</div>
+    <%end%>
   </div>
-<div class="row m-4 d-flex justify-content-center align-items-center">
-  <%= link_to hikes_path do %>
-    <div class="btn our-btn-outline-dark mt-1 col-md-4 width-100"><i class="fas fa-undo"></i> Back to hikes</div>
-  <%end%>
-</div>
   <h3 class="text-center mb-3 mt-5">Description</h3>
   <p class="mx-5 mb-4"><%= @hike.description %></p>
   <div class="line"></div>
@@ -144,7 +139,7 @@
       <div data-form-target="image" class="d-none mx-3 py-3">
         <%= simple_form_for [ @hike ], :url => add_image_hike_path, :method => :put, multipart: true do | f | %>
           <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-          <%= f.submit "Upload an image", class: "btn btn-primary" %>
+          <%= f.submit "Upload an image", class: "btn our-button" %>
         <% end %>
         <p data-action="click->form#hideImage" class="text-center"> <i class="fas fa-chevron-up"></i> </p>
       </div>
@@ -157,7 +152,7 @@
         <%= simple_form_for [ @hike, @review ] do | f | %>
           <%= f.input :content %>
           <%= f.input :rating %>
-          <%= f.submit "Leave a review", class: "btn btn-primary" %>
+          <%= f.submit "Leave a review", class: "btn our-button" %>
         <% end %>
         <p data-action="click->form#hideForm" class="text-center"> <i class="fas fa-chevron-up my-2"></i> </p>
         <div class="line-sm"></div>
