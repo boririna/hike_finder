@@ -27,12 +27,14 @@
 
   <div class="line-sm"></div>
 
-  <h2 class="text-center my-3"><%= @hike.name %></h2>
-  <% if @hike.map_photo.present? %>
-    <a href="https://map.schweizmobil.ch/?lang=en&land=wanderland&route=all&layers=Wanderland&photos=yes&logo=yes&detours=yes&season=summer&resolution=84.09&E=2670960&N=1237299&bgLayer=pk" target="_blank">
-      <%= cl_image_tag @hike.map_photo.key, class:"d-block mw-100 mx-auto", alt:"..." %>
-    </a>
-  <% end %>
+  <div class="our-container-show">
+
+    <h2 class="text-center my-3"><%= @hike.name %></h2>
+    <% if @hike.map_photo.present? %>
+      <a href="https://map.schweizmobil.ch/?lang=en&land=wanderland&route=all&layers=Wanderland&photos=yes&logo=yes&detours=yes&season=summer&resolution=84.09&E=2670960&N=1237299&bgLayer=pk" target="_blank">
+        <%= cl_image_tag @hike.map_photo.key, class:"d-block w-100 mx-auto", alt:"..." %>
+      </a>
+    <% end %>
 
     <div class="our-container-spec mt-2">
 
@@ -42,7 +44,7 @@
       </p>
       <p class="d-flex">
         <i class="fas fa-clock m-1" style="color: #01B2B2"></i>
-        Hiking time: <%= @hike.hiking_time %>
+        Time: <%= @hike.hiking_time %>
       </p>
       <p class="d-flex">
         <i class="fas fa-arrows-alt-h m-1" style="color: #01B2B2"></i>
@@ -62,15 +64,16 @@
           Dog friendly
         <% end %>
       </p>
-
     </div>
 
-  <div class="row px-4 d-flex justify-content-center align-items-center">
-    <%= link_to hikes_path do %>
-      <div class="btn our-btn-outline-dark mt-1 col-md-4 width-100"><i class="fas fa-undo"></i> Back to hikes</div>
-    <%end%>
+    <div class="row px-4 d-flex justify-content-center align-items-center">
+      <%= link_to hikes_path do %>
+        <div class="btn our-btn-outline-dark mt-1 col-md-4 width-100"><i class="fas fa-undo"></i> Back to hikes</div>
+      <%end%>
+    </div>
   </div>
-  <h3 class="text-center mb-3 mt-5">Description</h3>
+
+  <h3 class="text-center mb-3 mt-4">Description</h3>
   <p class="mx-5 mb-4"><%= @hike.description %></p>
   <div class="line"></div>
 

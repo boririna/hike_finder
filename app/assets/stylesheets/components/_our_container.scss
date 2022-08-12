@@ -55,7 +55,12 @@
   max-width: 1200px;
   display: flex;
   flex-wrap: wrap;
-  flex-grow: 1;
   justify-content: space-between;
-  margin: auto;
+  flex-grow: 1;
+}
+
+.our-container-show {
+  width: 95%;
+  margin: 0 auto;
+  justify-content: center;
 }
