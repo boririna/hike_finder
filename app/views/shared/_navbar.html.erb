@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-dark navbar-lewagon sticky-top">
+<div class="navbar navbar-expand-md navbar-dark navbar-lewagon sticky-top">
   <div class="container-fluid">
     <%= link_to root_path do %>
       <%= image_tag "logo.png", class: "logo"  %>
@@ -15,7 +15,7 @@
         </div>
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-            <li class="offcanvas-title my-2 me-2 mb-4" id="offcanvasNavbarLabel"><strong>Hello <%= current_user.username.capitalize %> </strong></li>
+            <li class="offcanvas-title my-2 me-2" id="offcanvasNavbarLabel"><strong>Hello <%= current_user.username.capitalize %> </strong></li>
             <li class="nav-item">
               <%= link_to "All Hikes", hikes_path, class: "nav-link active text-dark" %>
             </li>
@@ -25,7 +25,7 @@
             <li class="nav-item">
               <%= link_to "About us", about_path, class: "nav-link active text-dark" %>
             </li>
-            <li class="nav-item mb-4">
+            <li class="nav-item">
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link active text-dark" %>
             </li>
           </ul>

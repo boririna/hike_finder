@@ -26,3 +26,9 @@
 .footer-copyright p {
   margin: 0;
 }
+
+@media (max-width: 374px) {
+  .footer {
+    padding: 0px 30px;
+  }
+}
