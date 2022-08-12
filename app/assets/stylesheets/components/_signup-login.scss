@@ -9,10 +9,10 @@
 }
 
 .nav-tabs .nav-link {
-  color: $turquoise;
+  color: $opec-turquoise;
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 24px;
-  font-weight: 300;
+  font-weight: 500;
 }
 
 .nav-tabs .nav-link:hover {
@@ -20,4 +20,8 @@
   color: $pink;
   font-weight: 500;
   font-size: 24px;
+}
+
+.nav-tabs .nav-link.active:hover {
+  color: $turquoise;
 }
