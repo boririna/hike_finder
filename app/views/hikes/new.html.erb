@@ -3,13 +3,13 @@
     <h3 class="my-2">Add a new hike</h3>
       <%= simple_form_for [ @hike ] do |f| %>
         <%= f.input :name %>
-        <%= f.input :description %>
+        <%= f.input :description, as: :text, input_html: {rows: 5, style: 'height: 100%'} %>
         <%= f.input :difficulty_level, collection: ["easy", "medium", "hard", "experienced"]%>
         <%= f.input :length %>
         <%= f.input :hiking_time %>
         <%= f.input :ascent %>
         <%= f.input :descent %>
-        <%= f.input :services %>
+        <%= f.input :services, as: :text, input_html: {rows: 3} %>
         <%= f.input :latitude %>
         <%= f.input :longitude %>
         <%= f.input :dog_friendly, as: :boolean, checked_value: true, unchecked_value: false %>
