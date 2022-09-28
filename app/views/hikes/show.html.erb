@@ -111,6 +111,7 @@
   <h3 class="text-center my-3">Image gallery</h3>
 
   <% if @hike.photos.any? %>
+    <div class="our-container-carousel">
 
       <div id="carouselExampleControls" class="carousel slide mb-3" data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -144,7 +145,7 @@
           </button>
         <% end %>
       </div>
-
+    </div>
   <% end %>
 
   <div>
