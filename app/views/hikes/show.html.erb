@@ -1,19 +1,21 @@
 
 <div class="container bg-white">
 
+
   <div class="d-flex justify-content-between mb-3 pt-3 ms-3 font">
+
     <%= "⭐" * Review.average_rating(@hike)%>
-
-    <% if @like.present? %>
-      <%= link_to like_path(@like), method: :delete do %>
-        <i onclick="myFunction(this)" class="fas fa-heart fa-heart-red img-icon me-3"></i>
+    <div class="container d-flex justify-content-end">
+      <% if @like.present? %>
+        <%= link_to like_path(@like), method: :delete do %>
+          <i onclick="myFunction(this)" class="fas fa-heart fa-heart-red img-icon me-3"></i>
+        <% end %>
+      <% else %>
+        <%= link_to hike_likes_path(@hike), method: :post do %>
+          <i onclick="myFunction(this)" class="fas fa-heart img-icon me-3"></i>
+        <% end %>
       <% end %>
-    <% else %>
-      <%= link_to hike_likes_path(@hike), method: :post do %>
-        <i onclick="myFunction(this)" class="fas fa-heart img-icon me-3"></i>
-      <% end %>
-    <% end %>
-
+    </div>
   </div>
 
   <% if current_user.present? %>
