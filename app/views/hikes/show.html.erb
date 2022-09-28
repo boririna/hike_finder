@@ -111,29 +111,40 @@
   <h3 class="text-center my-3">Image gallery</h3>
 
   <% if @hike.photos.any? %>
-    <div id="carouselExampleControls" class="carousel slide mb-3" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <%= cl_image_tag @hike.photos[0].key, class:"d-block w-100 height-250", alt:"..." %>
+
+      <div id="carouselExampleControls" class="carousel slide mb-3" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <% @hike.photos.each_with_index do |photo, i| %>
+            <% if i==0 %>
+              <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <% else %>
+              <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide-to='<%= i %>' aria-label='Slide <%= i %>'></button>
+            <% end %>
+          <% end %>
         </div>
-        <% @hike.photos[1..-1].each do |photo| %>
-          <div class="carousel-item">
-            <%= cl_image_tag photo.key, class:"d-block w-100 height-250", alt:"..." %>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <%= cl_image_tag @hike.photos[0].key, class:"d-block w-100 height-250", alt:"..." %>
           </div>
+          <% @hike.photos[1..-1].each_with_index do |photo, i| %>
+            <div class="carousel-item">
+              <%= cl_image_tag photo.key, class:"d-block w-100 height-250", alt:"..." %>
+            </div>
+          <% end %>
+        </div>
+
+        <% if @hike.photos.count > 1 %>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         <% end %>
       </div>
 
-      <% if @hike.photos.count > 1 %>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      <% end %>
-    </div>
   <% end %>
 
   <div>
