@@ -66,8 +66,42 @@
 }
 
 .our-container-carousel {
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
   justify-content: center;
   align-items: center;
+}
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .our-container-carousel {
+    width: 100%;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .our-container-carousel {
+    width: 100%;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .our-container-carousel {
+    width: 100%;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .our-container-carousel {
+    width: 80%;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .our-container-carousel {
+    width: 80%;
+  }
 }
